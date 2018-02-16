@@ -25,6 +25,7 @@ namespace okimisan_app
 
             Logic.Logic.onLogicUpdate((l) =>
             {
+                //this.Topmost = l.general.currentPage != Logic.General.PAGES.Auth;
                 if (l.general.currentPage!=currentPage)
                     this.frame.Navigate(new Uri("Screens/" + l.general.currentPage + ".xaml", UriKind.Relative));
             });
