@@ -30,15 +30,15 @@
                     <RowDefinition Height="20pt"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="ПОЛЬЗОВАТЕЛЬ" Foreground="White" HorizontalContentAlignment="Left" FontSize="12" VerticalContentAlignment="Center" />
-                <ComboBox Grid.Row="1" BorderBrush="White" Background="Black" Foreground="White" OpacityMask="Black" >
-                    <ComboBoxItem Content="Официант" Foreground="White" Background="Black" BorderBrush="White"/>
-                    <ComboBoxItem Content="Менеджер" Foreground="White" Background="Black" BorderBrush="White"/>
-                    <ComboBoxItem Content="Менеджер зала" Foreground="White" Background="Black" BorderBrush="White"/>
-                    <ComboBoxItem Content="Шеф повар" Foreground="White" Background="Black" BorderBrush="White"/>
-                    <ComboBoxItem Content="Босс" Foreground="White" Background="Black" BorderBrush="White"/>
+                <ComboBox Grid.Row="1" BorderBrush="Black" Background="White" Foreground="Black" >
+                    <ComboBoxItem Content="Официант" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Менеджер" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Менеджер зала" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Шеф повар" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Босс" Foreground="Black" Background="White" BorderBrush="Black"/>
                 </ComboBox>
                 <Label Grid.Row="2" Content="ПАРОЛЬ" Foreground="White" HorizontalContentAlignment="Left" FontSize="12" VerticalContentAlignment="Center" />
-                <TextBox Grid.Row="3" Foreground="White" BorderBrush="White" CaretBrush="White" SelectionBrush="#FF56595D" Background="Black" VerticalContentAlignment="Center"/>
+                <TextBox Grid.Row="3" Foreground="Black" BorderBrush="Black" CaretBrush="Black" SelectionBrush="#FF56595D" Background="White" VerticalContentAlignment="Center"/>
             </Grid>
             <Button Grid.Row="2" x:Name="button" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="20pt" Background="Black" BorderBrush="White" Foreground="White" />
         </Grid>
