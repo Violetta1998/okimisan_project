@@ -23,6 +23,11 @@ namespace okimisan_app.Screens
         public Main1()
         {
             InitializeComponent();
+
+            Logic.Logic.onLogicUpdate((l) =>
+            {
+                info.Content = l.auth.userType.ToString() + l.auth.name + l.auth.password;
+            });
         }
     }
 }

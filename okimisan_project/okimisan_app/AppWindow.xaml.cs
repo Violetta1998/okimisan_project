@@ -22,12 +22,16 @@ namespace okimisan_app
         public AppWindow()
         {
             InitializeComponent();
-
+            Logic.Logic.execute((l) => {
+                l.general.InitializeScreens();
+                currentPage = l.general.currentPage;
+                this.Content = l.general.getPage(currentPage);
+            });
             Logic.Logic.onLogicUpdate((l) =>
             {
                 //this.Topmost = l.general.currentPage != Logic.General.PAGES.Auth;
-                if (l.general.currentPage!=currentPage)
-                    this.frame.Navigate(new Uri("Screens/" + l.general.currentPage + ".xaml", UriKind.Relative));
+                if (l.general.currentPage != currentPage)
+                    this.Content = l.general.getPage(l.general.currentPage);
             });
         }
 

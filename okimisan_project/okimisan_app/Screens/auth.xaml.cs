@@ -1,4 +1,5 @@
-﻿using System;
+﻿using okimisan_app.Assets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,15 +23,51 @@ namespace okimisan_app.Screens
     {
         public Auth()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch(Exception ex)
+            {
+                int f = 1;
+            }
         }
+
+        private string password_label = "ПАРОЛЬ";
+        private string name_label = "ИМЯ";
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Logic.Logic.execute((l) =>
             {
-                l.auth.LogIn();
+                l.auth.name = additionalTextBox.Text;
+                l.auth.password = additionalPasswordBox.Password.ToString();
+                l.auth.userType = (UserType)(comboBox.SelectedIndex+1);
+                try
+                {
+                    l.auth.LogIn();
+                    notification.Content = string.Empty;
+                }
+                catch(Exception ex)
+                {
+                    notification.Content = ex.Message;
+                }
             });
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (additionalLabel != null)
+            {
+                additionalLabel.Content = NameTextBoxAllow() ? name_label : password_label;
+                additionalTextBox.Visibility = NameTextBoxAllow() ? Visibility.Visible : Visibility.Collapsed;
+                additionalPasswordBox.Visibility = NameTextBoxAllow() ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        private bool NameTextBoxAllow()
+        {
+            return comboBox.SelectedIndex == 0;
         }
     }
 }

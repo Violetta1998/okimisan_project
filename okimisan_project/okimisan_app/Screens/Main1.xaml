@@ -9,6 +9,6 @@
       Title="Main1">
 
     <Grid Background="Black">
-        <Label Content="Топ Стиль2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"/>
+        <Label x:Name="info" Content="Топ Стиль2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"/>
     </Grid>
 </Page>

@@ -6,5 +6,7 @@
         xmlns:local="clr-namespace:okimisan_app"
         mc:Ignorable="d"
         Title="AppWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen">
-    <Frame x:Name="frame" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Source="/okimisan_app;component/Screens/Auth.xaml" NavigationUIVisibility="Hidden" />
+    <Grid Background="Black">
+        
+    </Grid>
 </Window>

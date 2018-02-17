@@ -1,4 +1,6 @@
-﻿using System;
+﻿using okimisan_app.Assets;
+using okimisan_app.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,9 @@ namespace okimisan_app.Logic
         public delegate void OnAuth();
 
         public bool isAuth = false;
+        public UserType userType = UserType.None;
+        public string password;
+        public string name;
 
         public OnUnAuth onUnAuth = () => { };
         public OnAuth onAuth = () => { };
@@ -19,6 +24,9 @@ namespace okimisan_app.Logic
         public void UnAuth()
         {
             isAuth = false;
+            password = string.Empty;
+            name = string.Empty;
+            userType = UserType.None;
             onUnAuth();
         }
 
@@ -28,11 +36,16 @@ namespace okimisan_app.Logic
             try
             {
                 isAuth = true;
+                User currentUser = AuthManager.getInstance().getUser(userType, userType == UserType.Waiter ? name : password);
+                if (currentUser == null)
+                    throw new Exception("Пользователь не найден");
+          
                 onAuth();
             }
-            catch
+            catch(Exception ex)
             {
-                Console.WriteLine("Error");
+                isAuth = false;
+                throw ex;
             }
         }
     }
