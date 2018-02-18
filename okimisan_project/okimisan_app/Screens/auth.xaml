@@ -27,23 +27,23 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20pt"/>
                     <RowDefinition Height="20pt"/>
-                    <RowDefinition Height="20pt"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20pt"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="ПОЛЬЗОВАТЕЛЬ" Foreground="White" HorizontalContentAlignment="Left" FontSize="12" VerticalContentAlignment="Center" />
-                <ComboBox x:Name="comboBox" Grid.Row="1" BorderBrush="Black" Background="#eaeaea" Foreground="Black" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
-                    <ComboBoxItem Content="Официант" Foreground="Black" Background="#eaeaea" BorderBrush="Black"/>
-                    <ComboBoxItem Content="Менеджер" Foreground="Black" Background="#eaeaea" BorderBrush="Black"/>
-                    <ComboBoxItem Content="Менеджер зала" Foreground="Black" Background="#eaeaea" BorderBrush="Black"/>
-                    <ComboBoxItem Content="Шеф повар" Foreground="Black" Background="#eaeaea" BorderBrush="Black"/>
-                    <ComboBoxItem Content="Босс" Foreground="Black" Background="#eaeaea" BorderBrush="Black"/>
+                <Label Grid.Row="0" Content="ПОЛЬЗОВАТЕЛЬ" Foreground="White" HorizontalContentAlignment="Left" FontSize="12" VerticalContentAlignment="Center" Margin="-5,0,15,26.333" Grid.RowSpan="2" />
+                <ComboBox x:Name="comboBox" Grid.Row="1" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Официант" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Менеджер" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Менеджер зала" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Шеф повар" Foreground="Black" Background="White" BorderBrush="Black"/>
+                    <ComboBoxItem Content="Босс" Foreground="Black" Background="White" BorderBrush="Black"/>
                 </ComboBox>
-                <Label x:Name="additionalLabel" Grid.Row="2" Content="ИМЯ" Foreground="White" HorizontalContentAlignment="Left" FontSize="12" VerticalContentAlignment="Center" />
+                <Label x:Name="additionalLabel" Grid.Row="2" Content="ИМЯ" Foreground="White" HorizontalContentAlignment="Left" FontSize="12" VerticalContentAlignment="Center" Margin="-5,0,5,0" />
                 <TextBox x:Name="additionalTextBox" Grid.Row="3" Foreground="Black" BorderBrush="Black" CaretBrush="Black" SelectionBrush="#FF56595D" Background="#eaeaea" VerticalContentAlignment="Center"/>
                 <PasswordBox x:Name="additionalPasswordBox" Grid.Row="3" Foreground="Black" BorderBrush="Black" CaretBrush="Black" SelectionBrush="#FF56595D" Background="#eaeaea" VerticalContentAlignment="Center" Visibility="Collapsed" />
             </Grid>
-            <Label x:Name="notification" Grid.Row="2" Content="" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Bottom" />
-            <Button Grid.Row="3" x:Name="button" Content="Войти" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20pt" Background="Black" BorderBrush="White" Foreground="White" ButtonBase.Click="button_Click"/>
+            <Label x:Name="notification" Grid.Row="1" Content="" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Bottom" />
+            <Button Grid.Row="2" x:Name="button" Content="ВОЙТИ" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="26" Background="#176760" Foreground="White" ButtonBase.Click="button_Click" Margin="0,40,0,0" Grid.RowSpan="2"/>
         </Grid>
     </Grid>
 </Page>
