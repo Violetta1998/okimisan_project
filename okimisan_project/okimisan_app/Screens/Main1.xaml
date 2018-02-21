@@ -4,18 +4,62 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:okimisan_app.Screens"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="350"
-      Title="Main1">
+      mc:Ignorable="d"
+      Title="main1" Height="285" Width="399.167">
 
-    <Grid Background="Black">
-        <Grid HorizontalAlignment="Left" Height="43" Margin="3,0,0,0" VerticalAlignment="Top" Width="339">
-            <Label x:Name="label" Content="ОКИМИ САН" HorizontalAlignment="Left" Margin="3,5,0,0" VerticalAlignment="Top" Foreground="White"/>
-            <Button x:Name="orders" Content="Заказы" HorizontalAlignment="Left" Margin="90,8,0,0" VerticalAlignment="Top" Width="60" Foreground="White" Background="Transparent" BorderBrush="Transparent" />
-            <Button x:Name="menu" Content="Меню" HorizontalAlignment="Left" Margin="146,8,0,0" VerticalAlignment="Top" Width="60" Foreground="White" Background="Transparent" BorderBrush="Transparent" Click="button_Copy_Click" RenderTransformOrigin="-0.046,0.467" />
-            <Button x:Name="clients" Content="Клиенты" HorizontalAlignment="Left" Margin="210,8,0,0" VerticalAlignment="Top" Width="60" Foreground="White" Background="Transparent" BorderBrush="Transparent" Click="button_Copy_Click" RenderTransformOrigin="-0.046,0.467" />
-            <Button x:Name="settings" Content="Настройки" HorizontalAlignment="Left" Margin="274,8,-3,0" VerticalAlignment="Top" Width="68" Foreground="White" Background="Transparent" BorderBrush="Transparent" Click="button_Copy_Click" RenderTransformOrigin="-0.046,0.467" />
+    <Grid Background="Black" MinWidth="400" Margin="0,0,-95,-54">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*" MinHeight="200"/>
+        </Grid.RowDefinitions>
+
+        <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="label" Content="ОКИМИ САН" Grid.Column="0" Grid.Row="0" Foreground="White" Background="Black"/>
+
+            <Menu x:Name="orders"  Grid.Column="2" Grid.Row="0" Foreground="White" Background="White" BorderBrush="White"/>
+            <MenuItem Header="Заказы" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center">
+                <MenuItem Header="Список заказов" Foreground="White" BorderBrush="White" />
+                <MenuItem Header="Принять новый заказ" Foreground="White"  BorderBrush="White" />
+                <MenuItem Header="Удалить заказ" Foreground="White"  BorderBrush="White" />
+            </MenuItem>
+
+            
+            <Menu x:Name="menu"  Grid.Column="4" Grid.Row="0" Foreground="White" Background="White" BorderBrush="Transparent"/>
+            <MenuItem Header="Меню" Grid.Column="4" Grid.Row="0">
+                <MenuItem Header="Меню блюд" Foreground="White" BorderBrush="White" />
+                <MenuItem Header="Меню ингредиентов" Foreground="White"  BorderBrush="White" />
+                <MenuItem Header="Список продуктов" Foreground="White"  BorderBrush="White" />
+                <MenuItem Header="Складской учёт" Foreground="White"  BorderBrush="White" />
+            </MenuItem>
+            
+            <Menu x:Name="clients"  Grid.Column="6" Grid.Row="0" Foreground="White" Background="White" BorderBrush="Transparent"/>
+            <MenuItem Header="Клиенты" Grid.Column="6" Grid.Row="0">
+                <MenuItem Header="Складской учёт" Foreground="White"  BorderBrush="White" />
+            </MenuItem>
+
+            <Menu x:Name="settings"  Grid.Column="8" Grid.Row="0" Foreground="White" Background="White" BorderBrush="Transparent"/>
+            <MenuItem Header="Настройки" Grid.Column="8" Grid.Row="0">
+                <MenuItem Header="Пользователи" Foreground="White"  BorderBrush="White" />
+                <MenuItem Header="Отчеты" Foreground="White"  BorderBrush="White" />
+            </MenuItem>
         </Grid>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="199" Margin="10,48,0,0" VerticalAlignment="Top" Width="330" Source="Resources/logo.png" />
+
+        <Image x:Name="image" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Top" Width="305" Source="/okimisan_app;component/Resources/logo.png" Opacity="1" Stretch="Uniform" IsEnabled="True" />
     </Grid>
 </Page>
+    
+    
