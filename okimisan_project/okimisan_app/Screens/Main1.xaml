@@ -31,7 +31,7 @@
 
             <Label x:Name="label" Content="ОКИМИ САН" Grid.Column="0" FontSize="18" FontWeight="SemiBold" Foreground="White" Background="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-            <Menu x:Name="orders" FontSize="18" Grid.Column="2" Grid.Row="0" Foreground="White" HorizontalAlignment="Left" Background="Black" BorderBrush="White" BorderThickness="3">
+            <Menu x:Name="orders" FontSize="18" Grid.Column="2" Grid.Row="0" Foreground="White" HorizontalAlignment="Left" Background="Black" BorderBrush="White">
                 <MenuItem Header="Заказы" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">
                     <MenuItem Header="Список заказов" Foreground="White" Background ="Black" BorderBrush="White" />
                     <MenuItem Header="Принять новый заказ" Foreground="White" Background ="Black" BorderBrush="White" />
@@ -39,7 +39,7 @@
                 </MenuItem>
             </Menu>
 
-            <Menu x:Name="menu" FontSize="18"  Grid.Column="4" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent" BorderThickness="3">
+            <Menu x:Name="menu" FontSize="18"  Grid.Column="4" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent">
             <MenuItem Header="Меню" Grid.Column="4" Grid.Row="0" Foreground="White">
                 <MenuItem Header="Меню блюд" Foreground="White" Background ="Black" BorderBrush="White" />
                 <MenuItem Header="Меню ингредиентов" Foreground="White" Background ="Black" BorderBrush="White" />
@@ -48,13 +48,13 @@
             </MenuItem>
             </Menu>
 
-            <Menu x:Name="clients" BorderThickness="3" FontSize="18" Grid.Column="6" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent">
+            <Menu x:Name="clients" FontSize="18" Grid.Column="6" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent">
                 <MenuItem Header="Клиенты" Grid.Column="6" Grid.Row="0" Foreground="White">
                     <MenuItem Header="Складской учёт" Foreground="White"  Background ="Black" BorderBrush="White" />
                 </MenuItem>
             </Menu>
 
-            <Menu x:Name="settings" BorderThickness="3" FontSize="18" Grid.Column="8" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent">
+            <Menu x:Name="settings" FontSize="18" Grid.Column="8" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent">
                 <MenuItem Header="Настройки" Grid.Column="8" Grid.Row="0" Foreground="White">
                     <MenuItem Header="Пользователи" Foreground="White"  Background ="Black" BorderBrush="White" />
                     <MenuItem Header="Отчеты" Foreground="White" Background ="Black" BorderBrush="White"/>
