@@ -17,7 +17,7 @@ namespace okimisan_app.Screens
     /// <summary>
     /// Логика взаимодействия для CreateOrder.xaml
     /// </summary>
-    public partial class CreateOrder : Window
+    public partial class CreateOrder : Page
     {
         public CreateOrder()
         {
