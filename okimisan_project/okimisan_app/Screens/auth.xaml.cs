@@ -23,14 +23,7 @@ namespace okimisan_app.Screens
     {
         public Auth()
         {
-            try
-            {
-                InitializeComponent();
-            }
-            catch(Exception ex)
-            {
-                int f = 1;
-            }
+            InitializeComponent();
         }
 
         private string password_label = "ПАРОЛЬ";

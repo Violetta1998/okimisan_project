@@ -27,14 +27,23 @@ namespace okimisan_app
                 currentPage = l.general.currentPage;
                 this.Content = l.general.getPage(currentPage);
             });
+
             Logic.Logic.onLogicUpdate((l) =>
             {
-                //this.Topmost = l.general.currentPage != Logic.General.PAGES.Auth;
-                if (l.general.currentPage != currentPage)
-                    this.Content = l.general.getPage(l.general.currentPage);
+                if (_availableScreens.Contains(l.general.currentPage))
+                {
+                    //this.Topmost = l.general.currentPage != Logic.General.PAGES.Auth;
+                    if (l.general.currentPage != currentPage)
+                    {
+                        this.Content = _main1Screens.Contains(l.general.currentPage) ? l.general.getPage(Logic.General.PAGES.Main1) : l.general.getPage(l.general.currentPage);
+                        currentPage = l.general.currentPage;
+                    }
+                }
             });
         }
 
-        private Logic.General.PAGES currentPage = Logic.General.PAGES.Auth;
+        private Logic.General.PAGES[] _main1Screens = new Logic.General.PAGES[] { Logic.General.PAGES.CreateOrder, Logic.General.PAGES.None };
+        private Logic.General.PAGES[] _availableScreens = new Logic.General.PAGES[] { Logic.General.PAGES.Auth, Logic.General.PAGES.Main1, Logic.General.PAGES.None, Logic.General.PAGES.CreateOrder };
+        private Logic.General.PAGES currentPage = Logic.General.PAGES.None;
     }
 }

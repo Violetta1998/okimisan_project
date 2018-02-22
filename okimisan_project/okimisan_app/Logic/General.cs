@@ -27,6 +27,8 @@ namespace okimisan_app.Logic
         {
             _pages.Add(PAGES.Auth, new Screens.Auth());
             _pages.Add(PAGES.Main1, new Screens.Main1());
+            _pages.Add(PAGES.None, null);
+            _pages.Add(PAGES.CreateOrder, new Screens.CreateOrder());
         }
 
         public PAGES currentPage
@@ -52,7 +54,7 @@ namespace okimisan_app.Logic
 
         public enum PAGES
         {
-            Main1, Auth
+            None, Main1, Auth, CreateOrder
         }       
     }
 }

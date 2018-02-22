@@ -5,16 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:okimisan_app.Screens"
       mc:Ignorable="d"
-      Title="main1" Height="349.5" Width="676.5">
+      Title="main1"
+        d:DesignHeight="400" d:DesignWidth="900">
 
     <Grid Background="Black" MinWidth="400" MinHeight="250">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Grid   VerticalAlignment="Top">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.3*"/>
@@ -22,13 +23,13 @@
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.1*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2.1*"/>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.1*"/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="label" Content="ОКИМИ САН" Grid.Column="0" Grid.Row="0" Foreground="White" Background="Black"/>
+            <Label x:Name="label" Content="ОКИМИ САН" Grid.Column="0" Foreground="White" Background="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
             <Menu x:Name="orders"  Grid.Column="2" Grid.Row="0" Foreground="White" HorizontalAlignment="Left" Background="Black" BorderBrush="White"/>
             <MenuItem Header="Заказы" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#958568">
@@ -57,8 +58,8 @@
                 <MenuItem Header="Отчеты" Foreground="#958568" Background ="Black" BorderBrush="White" HorizontalAlignment="Right"  />
             </MenuItem>
         </Grid>
-
-        <Image x:Name="image" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Top"  Source="/okimisan_app;component/Resources/logo.png" Opacity="1" Stretch="Uniform" IsEnabled="True" />
+        <Frame x:Name="frame" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" Opacity="1" />
+        <Image x:Name="image" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"  Source="/okimisan_app;component/Resources/logo.png" Opacity="1" Stretch="Uniform" IsEnabled="True" MaxHeight="500" MaxWidth="500" />
     </Grid>
 </Page>
     

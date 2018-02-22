@@ -5,75 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:okimisan_app.Screens"
         mc:Ignorable="d"
-        Title="CreateOrder" Height="300" Width="350">
+        Title="CreateOrder"
+        d:DesignHeight="300" d:DesignWidth="300">
 
-    <Grid Background="Black">
-        <Grid >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-
-            <Grid   VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.3*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.1*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.1*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.1*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.1*"/>
-                </Grid.ColumnDefinitions>
-
-                <Label x:Name="label" Content="ОКИМИ САН" Grid.Column="0" Grid.Row="0" Foreground="White" Background="Black"/>
-
-                <Menu x:Name="orders"  Grid.Column="2" Grid.Row="0" Foreground="White" HorizontalAlignment="Left" Background="Black" BorderBrush="White"/>
-                <MenuItem Header="Заказы" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#958568">
-                    <MenuItem Header="Список заказов" Foreground="#958568" Background ="Black" BorderBrush="White" />
-                    <MenuItem Header="Принять новый заказ" Foreground="#958568" Background ="Black" BorderBrush="White" />
-                    <MenuItem Header="Удалить заказ" Foreground="#958568" Background ="Black" BorderBrush="White" />
-                </MenuItem>
-
-
-                <Menu x:Name="menu"  Grid.Column="4" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent"/>
-                <MenuItem Header="Меню" Grid.Column="4" Grid.Row="0" Foreground="#958568">
-                    <MenuItem Header="Меню блюд" Foreground="#958568" Background ="Black" BorderBrush="White" />
-                    <MenuItem Header="Меню ингредиентов" Foreground="#958568" Background ="Black" BorderBrush="White" />
-                    <MenuItem Header="Список продуктов" Foreground="#958568" Background ="Black" BorderBrush="White" />
-                    <MenuItem Header="Складской учёт" Foreground="#958568" Background ="Black"  BorderBrush="White" />
-                </MenuItem>
-
-                <Menu x:Name="clients"  Grid.Column="6" Grid.Row="0" Foreground="#958568" Background="Black" BorderBrush="Transparent"/>
-                <MenuItem Header="Клиенты" Grid.Column="6" Grid.Row="0" Foreground="#958568">
-                    <MenuItem Header="Складской учёт" Foreground="White"  Background ="Black" BorderBrush="#958568" />
-                </MenuItem>
-
-                <Menu x:Name="settings"  Grid.Column="8" Grid.Row="0" Foreground="#958568" Background="Black" BorderBrush="Transparent"/>
-                <MenuItem Header="Настройки" Grid.Column="8" Grid.Row="0" Foreground="#958568">
-                    <MenuItem Header="Пользователи" Foreground="#958568"  Background ="Black" BorderBrush="White" />
-                    <MenuItem Header="Отчеты" Foreground="#958568" Background ="Black" BorderBrush="White" HorizontalAlignment="Right"  />
-                </MenuItem>
-            </Grid>
-        </Grid>
+    <Grid Background="#FFB67F18">
         
-        <Grid Margin="0,0,1,0" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="4*"/>
-                <RowDefinition Height="3*"/>
-            </Grid.RowDefinitions>
-           
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition  Width="2*"/>
-                <ColumnDefinition  Width="1*"/>
-                <ColumnDefinition  Width="2*"/>
-            </Grid.ColumnDefinitions>
-            
-            
-        </Grid>
     </Grid>
 
 </Page>
