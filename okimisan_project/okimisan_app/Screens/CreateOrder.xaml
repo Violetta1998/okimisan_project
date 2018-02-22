@@ -8,27 +8,73 @@
         Title="CreateOrder" Height="300" Width="350">
 
     <Grid Background="Black">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="204*"/>
-            <RowDefinition Height="97*"/>
-        </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Left" Height="43" Margin="3,0,0,0" VerticalAlignment="Top" Width="339">
-            <Label x:Name="label" Content="ОКИМИ САН" HorizontalAlignment="Left" Margin="3,5,0,0" VerticalAlignment="Top" Foreground="White"/>
-            <Button x:Name="orders" Content="Заказы" HorizontalAlignment="Left" Margin="90,8,0,0" VerticalAlignment="Top" Width="60" Foreground="#958568" Background="Transparent" BorderBrush="Transparent" />
-            <Button x:Name="menu" Content="Меню" HorizontalAlignment="Left" Margin="146,8,0,0" VerticalAlignment="Top" Width="60" Foreground="White" Background="Transparent" BorderBrush="Transparent"  RenderTransformOrigin="-0.046,0.467" />
-            <Button x:Name="clients" Content="Клиенты" HorizontalAlignment="Left" Margin="210,8,0,0" VerticalAlignment="Top" Width="60" Foreground="White" Background="Transparent" BorderBrush="Transparent"  RenderTransformOrigin="-0.046,0.467" />
-            <Button x:Name="settings" Content="Настройки" HorizontalAlignment="Left" Margin="274,8,-3,0" VerticalAlignment="Top" Width="68" Foreground="White" Background="Transparent" BorderBrush="Transparent" RenderTransformOrigin="-0.046,0.467" />
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid   VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="label" Content="ОКИМИ САН" Grid.Column="0" Grid.Row="0" Foreground="White" Background="Black"/>
+
+                <Menu x:Name="orders"  Grid.Column="2" Grid.Row="0" Foreground="White" HorizontalAlignment="Left" Background="Black" BorderBrush="White"/>
+                <MenuItem Header="Заказы" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#958568">
+                    <MenuItem Header="Список заказов" Foreground="#958568" Background ="Black" BorderBrush="White" />
+                    <MenuItem Header="Принять новый заказ" Foreground="#958568" Background ="Black" BorderBrush="White" />
+                    <MenuItem Header="Удалить заказ" Foreground="#958568" Background ="Black" BorderBrush="White" />
+                </MenuItem>
+
+
+                <Menu x:Name="menu"  Grid.Column="4" Grid.Row="0" Foreground="White" Background="Black" BorderBrush="Transparent"/>
+                <MenuItem Header="Меню" Grid.Column="4" Grid.Row="0" Foreground="#958568">
+                    <MenuItem Header="Меню блюд" Foreground="#958568" Background ="Black" BorderBrush="White" />
+                    <MenuItem Header="Меню ингредиентов" Foreground="#958568" Background ="Black" BorderBrush="White" />
+                    <MenuItem Header="Список продуктов" Foreground="#958568" Background ="Black" BorderBrush="White" />
+                    <MenuItem Header="Складской учёт" Foreground="#958568" Background ="Black"  BorderBrush="White" />
+                </MenuItem>
+
+                <Menu x:Name="clients"  Grid.Column="6" Grid.Row="0" Foreground="#958568" Background="Black" BorderBrush="Transparent"/>
+                <MenuItem Header="Клиенты" Grid.Column="6" Grid.Row="0" Foreground="#958568">
+                    <MenuItem Header="Складской учёт" Foreground="White"  Background ="Black" BorderBrush="#958568" />
+                </MenuItem>
+
+                <Menu x:Name="settings"  Grid.Column="8" Grid.Row="0" Foreground="#958568" Background="Black" BorderBrush="Transparent"/>
+                <MenuItem Header="Настройки" Grid.Column="8" Grid.Row="0" Foreground="#958568">
+                    <MenuItem Header="Пользователи" Foreground="#958568"  Background ="Black" BorderBrush="White" />
+                    <MenuItem Header="Отчеты" Foreground="#958568" Background ="Black" BorderBrush="White" HorizontalAlignment="Right"  />
+                </MenuItem>
+            </Grid>
         </Grid>
-
-        <Label x:Name="label1" Content="Принять новый заказ" HorizontalAlignment="Left" Margin="3,43,0,0" VerticalAlignment="Top" Foreground="#958568" Background="Transparent" Width="128"/>
-        <Label x:Name="label2" Content="Имя" HorizontalAlignment="Left" Margin="3,69,0,0" VerticalAlignment="Top" Foreground="white" Background="Transparent"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="20" Margin="8,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Foreground="White" Background="White"/>
-
-        <Label x:Name="phone" Content="Номер телефона" HorizontalAlignment="Left" Margin="3,114,0,0" VerticalAlignment="Top" Foreground="white" Background="Transparent"/>
-        <TextBox x:Name="phone2" HorizontalAlignment="Left" Height="20" Margin="8,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Foreground="White" Background="White"/>
-        <Label x:Name="label3" Content="Примечание" HorizontalAlignment="Left" Margin="4,160,0,0" VerticalAlignment="Top" Foreground="white" Background="Transparent"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="52" Margin="10,186,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="116" Background="White" Foreground="White" Grid.RowSpan="2" />
-
+        
+        <Grid Margin="0,0,1,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+           
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="2*"/>
+                <ColumnDefinition  Width="1*"/>
+                <ColumnDefinition  Width="2*"/>
+            </Grid.ColumnDefinitions>
+            
+            
+        </Grid>
     </Grid>
+
 </Page>
 
