@@ -6,10 +6,50 @@
         xmlns:local="clr-namespace:okimisan_app.Screens"
         mc:Ignorable="d"
         Title="CreateOrder"
-        d:DesignHeight="300" d:DesignWidth="300">
+        d:DesignHeight="500" d:DesignWidth="500">
 
-    <Grid Background="#FFB67F18">
-        
+    <Grid Background="Black">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Принять новый заказ" Foreground="#958568" FontSize="12pt" Grid.Column="1" Grid.Row="0"/>
+            <Label Content="Имя" Foreground="White" FontSize="12pt" Grid.Column="1" Grid.Row="1"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" />
+
+            <Label Content="Номер телефона" Foreground="White" FontSize="12pt" Grid.Column="1" Grid.Row="3"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Stretch" />
+
+            <Label Content="Примечания" Foreground="White" FontSize="12pt" Grid.Column="1" Grid.Row="5"/>
+            <RichTextBox HorizontalAlignment="Stretch" Grid.Row="6" Grid.Column="1" VerticalAlignment="Stretch" />
+
+            <Label Foreground="White" Content="Стол" FontSize="12pt" Grid.Column="1" Grid.Row="7"/>
+            <ComboBox x:Name="comboBox" Grid.Row="8" Grid.Column="1" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="1" Foreground="White" Background="Transparent" BorderBrush="Black"/>
+                <ComboBoxItem Content="2" Foreground="White" Background="Transparent" BorderBrush="Black"/>
+                <ComboBoxItem Content="3" Foreground="White" Background="Transparent" BorderBrush="Black"/>
+                <ComboBoxItem Content="4" Foreground="White" Background="Transparent" BorderBrush="Black"/>
+                <ComboBoxItem Content="5" Foreground="White" Background="Transparent" BorderBrush="Black"/>
+            </ComboBox>
+        </Grid>
     </Grid>
 
 </Page>
