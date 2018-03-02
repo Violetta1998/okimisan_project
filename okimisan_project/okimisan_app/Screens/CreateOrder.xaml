@@ -12,45 +12,173 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="80" />
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="85"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="3*" MaxWidth="300"/>
+                <ColumnDefinition Width="465"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200"/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Принять новый заказ" Foreground="#958568" FontSize="12pt" Grid.Column="1" Grid.Row="0"/>
-            <Label Content="Имя" Foreground="White" FontSize="12pt" Grid.Column="1" Grid.Row="1"/>
-            <TextBox HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" />
+            <Label Content="Принять новый заказ" Foreground="#958568" FontSize="14pt" Grid.Column="2" Grid.Row="0"/>
+            <Label Content="Имя" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="1"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
 
-            <Label Content="Номер телефона" Foreground="White" FontSize="12pt" Grid.Column="1" Grid.Row="3"/>
-            <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Stretch" />
+            <Label Content="Номер телефона" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="3"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
 
-            <Label Content="Примечания" Foreground="White" FontSize="12pt" Grid.Column="1" Grid.Row="5"/>
-            <RichTextBox HorizontalAlignment="Stretch" Grid.Row="6" Grid.Column="1" VerticalAlignment="Stretch" />
+            
+            <Label Content="Примечания" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="5"/>
+            <RichTextBox HorizontalAlignment="Stretch" Grid.Row="6" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
 
-            <Label Foreground="White" Content="Стол" FontSize="12pt" Grid.Column="1" Grid.Row="7"/>
-            <ComboBox x:Name="comboBox" Grid.Row="8" Grid.Column="1" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                <ComboBoxItem Content="1" Foreground="White" Background="Transparent" BorderBrush="Black"/>
-                <ComboBoxItem Content="2" Foreground="White" Background="Transparent" BorderBrush="Black"/>
-                <ComboBoxItem Content="3" Foreground="White" Background="Transparent" BorderBrush="Black"/>
-                <ComboBoxItem Content="4" Foreground="White" Background="Transparent" BorderBrush="Black"/>
-                <ComboBoxItem Content="5" Foreground="White" Background="Transparent" BorderBrush="Black"/>
+            <Label Foreground="White" Content="Способ оплаты" FontSize="14pt" Grid.Column="2" Grid.Row="9"/>
+            <ComboBox Grid.Row="10" Grid.Column="2" BorderBrush="Black" FontSize="12pt" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="Оплата картой онлайн" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="Оплата наличными курьеру" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="Оплата картой курьеру" Foreground="Black" Background="White" BorderBrush="Black"/>
             </ComboBox>
+
+            <Label Content="Сдача с" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="11"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="12" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="Итоговая сумма заказа" Foreground="#F44336" FontSize="14pt" Grid.Column="2" Grid.Row="13"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="3*" MaxWidth="300"/>
+                <ColumnDefinition Width="465"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Дом" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="3"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="Корпус" Foreground="White" FontSize="14pt" Grid.Column="6" Grid.Row="3"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="6" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="Подъезд" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="5"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="6" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="Этаж" Foreground="White" FontSize="14pt" Grid.Column="6" Grid.Row="5"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="6" Grid.Column="6" FontSize="14pt" VerticalAlignment="Stretch"  />
+
+            <Label Content="Квартира" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="7"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="8" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="Домофон" Foreground="White" FontSize="14pt" Grid.Column="6" Grid.Row="7"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="8" Grid.Column="6" FontSize="14pt" VerticalAlignment="Stretch" />
+
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="3*" MaxWidth="300"/>
+                <ColumnDefinition Width="465"/>
+                <ColumnDefinition Width="1*" MaxWidth="410"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="85"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Улица" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="1"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Button Content="ДОБАВИТЬ АДРЕС"  Grid.Row="10" Height="35" Grid.Column="4" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
+
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="85"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Foreground="White" Content="Стол" FontSize="14pt" Grid.Column="2" Grid.Row="7"/>
+            <ComboBox x:Name="comboBox" Grid.Row="8" Grid.Column="2" MinWidth="40" FontSize="12pt" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="1" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="2" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="3" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="4" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="5" Foreground="Black" Background="White" BorderBrush="Black"/>
+            </ComboBox>
+
+            <Label Content="Ко времени" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="7"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="8" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
         </Grid>
     </Grid>
-
+    
 </Page>
 
