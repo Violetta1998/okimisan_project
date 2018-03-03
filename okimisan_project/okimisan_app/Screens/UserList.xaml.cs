@@ -24,5 +24,10 @@ namespace okimisan_app.Screens
         {
             InitializeComponent();
         }
+        
+        private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            phonePlaceHolder.Visibility = phoneTextBox.Text.Equals(string.Empty) ? Visibility.Visible : Visibility.Collapsed;
+        }
     }
 }

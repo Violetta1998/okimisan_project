@@ -39,7 +39,7 @@ namespace okimisan_app.Screens
             });
         }
 
-        private Logic.General.PAGES[] _availableScreens = new Logic.General.PAGES[] { Logic.General.PAGES.CreateOrder };
+        private Logic.General.PAGES[] _availableScreens = new Logic.General.PAGES[] { Logic.General.PAGES.CreateOrder, Logic.General.PAGES.UserList };
         private Logic.General.PAGES currentPage = Logic.General.PAGES.None;
     }
 }

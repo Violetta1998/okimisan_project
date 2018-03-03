@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:okimisan_app.Screens"
         mc:Ignorable="d"
         Title="CreateOrder"
-        d:DesignHeight="500" d:DesignWidth="500">
+        d:DesignHeight="1100" d:DesignWidth="1500">
 
     <Grid Background="Black">
 

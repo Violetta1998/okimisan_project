@@ -9,15 +9,17 @@
       Title="UserList">
 
     <Grid Background="Black">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Label Foreground="White" FontSize="24" VerticalAlignment="Top">Телефон:</Label>
-            <TextBox Foreground="White" FontSize="24" VerticalAlignment="Top" BorderThickness="1" Background="Black" BorderBrush="White" Margin="0,50,0,0" x:Name="phone" />
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2">           
+            <TextBox Foreground="White" FontSize="24" VerticalAlignment="Center" BorderThickness="1" Background="Black" BorderBrush="White" x:Name="phoneTextBox" HorizontalAlignment="Left" Width="350" TextChanged="phoneTextBox_TextChanged" />
+            <Label x:Name="phonePlaceHolder" Foreground="Wheat" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Width="350" IsHitTestVisible="False">Введите телефон</Label>
             <Label Foreground="White" FontSize="24" VerticalAlignment="Top" Margin="0,100,0,0">Скидка:</Label>
-            <ComboBox x:Name="discount" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Top" Margin="0,150,0,0">
+            <ComboBox x:Name="discount" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="350" Margin="400,0,0,0" >
                 <ComboBoxItem Content="Все" Foreground="Black" Background="White" BorderBrush="Black"/>
                 <ComboBoxItem Content="От 5%" Foreground="Black" Background="White" BorderBrush="Black"/>
                 <ComboBoxItem Content="От 10%" Foreground="Black" Background="White" BorderBrush="Black"/>
@@ -26,7 +28,6 @@
                 <ComboBoxItem Content="От 50%" Foreground="Black" Background="White" BorderBrush="Black"/>
                 <ComboBoxItem Content="100%" Foreground="Black" Background="White" BorderBrush="Black"/>
             </ComboBox>
-            <Button Foreground="White" FontSize="24" VerticalAlignment="Top" Background="#176760" Margin="0,200,0,0" Width="150" HorizontalAlignment="Center" Content="Применить" />
         </Grid>        
     </Grid>
 </Page>
