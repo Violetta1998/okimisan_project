@@ -36,8 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,7 +63,9 @@
     <Compile Include="Components\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Client.cs" />
     <Compile Include="Managers\AuthManager.cs" />
+    <Compile Include="Managers\DataBaseManager.cs" />
     <Compile Include="Screens\Auth.xaml.cs">
       <DependentUpon>Auth.xaml</DependentUpon>
     </Compile>
@@ -146,6 +150,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddIcon.png" />
+    <Resource Include="Resources\RemoveIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\LeftArrowIcon.png" />
+    <Resource Include="Resources\RightArrowIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
