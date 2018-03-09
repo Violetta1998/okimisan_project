@@ -8,28 +8,13 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="UserList">
 
-    <Grid Background="Black">        
+    <Grid Background="Black">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-
-        <Rectangle Stroke="Wheat" Grid.Row="0" StrokeThickness="1"  Margin="12,-1,12,0" RadiusX="15" RadiusY="15"/>
-        <Rectangle Stroke="Wheat" Grid.Row="2" StrokeThickness="1" Margin="-1,0,-1,0"/>
-        <Grid Grid.Row="0" HorizontalAlignment="Left" Margin="24,0,24,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Background="Transparent" OpacityMask="White" BorderBrush="White" Margin="0,-1,0,0">
-                <Image Source="/okimisan_app;component/Resources/AddIcon.png"/>
-            </Button>
-            <Button Grid.Column="1" Background="Transparent" BorderBrush="White" Margin="0,-1,0,0">
-                <Image Source="/okimisan_app;component/Resources/RemoveIcon.png"/>
-            </Button>
-        </Grid>
-        <Grid Grid.Row="2">
+        <Rectangle Stroke="Wheat" Grid.Row="1" StrokeThickness="1" Margin="-1,0,-1,0"/>
+        <Grid Grid.Row="1">
             <TextBox Foreground="White" FontSize="12" VerticalAlignment="Center" BorderThickness="1" Background="Black" BorderBrush="White" x:Name="phoneTextBox" HorizontalAlignment="Left" Width="350" TextChanged="phoneTextBox_TextChanged" Margin="25,0,0,0" />
             <Label x:Name="phonePlaceHolder" Foreground="Wheat" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="350" IsHitTestVisible="False" Margin="25,0,0,0">Введите телефон</Label>
             <ComboBox x:Name="discount" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="350" Margin="425,0,0,0" >
@@ -56,7 +41,7 @@
                 </Button>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" x:Name="table" SizeChanged="table_SizeChanged">
+        <Grid Grid.Row="0" x:Name="table" SizeChanged="table_SizeChanged">
             
         </Grid>
     </Grid>
