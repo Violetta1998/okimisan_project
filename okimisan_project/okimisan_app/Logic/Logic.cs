@@ -49,7 +49,7 @@ namespace okimisan_app.Logic
 
             auth.onAuth = () => {
                 if (auth.isAuth)
-                    general.currentPage = General.PAGES.UserList;
+                    general.currentPage = General.PAGES.CreateOrder;
             };
 
             auth.onUnAuth = () =>
