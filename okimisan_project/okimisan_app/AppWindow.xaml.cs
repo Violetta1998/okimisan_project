@@ -1,4 +1,5 @@
-﻿using System;
+﻿using okimisan_app.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace okimisan_app
         public AppWindow()
         {
             InitializeComponent();
+            DataBaseManager.getInstance();
             Logic.Logic.execute((l) => {
                 l.general.InitializeScreens();
                 currentPage = l.general.currentPage;
