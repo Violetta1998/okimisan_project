@@ -75,6 +75,9 @@
     <Compile Include="Screens\Main1.xaml.cs">
       <DependentUpon>Main1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\OrderList.xaml.cs">
+      <DependentUpon>OrderList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
