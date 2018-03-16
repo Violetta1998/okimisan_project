@@ -25,12 +25,14 @@ namespace okimisan_app.Screens
     public partial class UserList : Page
     {
         const int itemCount = 20;
+        const int headerHeight = 40;
         const double contentProcent = 0.64;
 
         public UserList()
         {
             InitializeComponent();
 
+            table.RowDefinitions.Add(new RowDefinition { Height = new GridLength(headerHeight, GridUnitType.Pixel) });
             for (int i = 0; i < itemCount; i++)
             {
                 table.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
@@ -64,15 +66,15 @@ namespace okimisan_app.Screens
            
             var currentTable = DataBaseManager.getInstance().clients.Where(x => true).Skip(itemCount * (page - 1)).Take(itemCount).ToList();
 
-            for(int i=0; i < currentTable.Count(); i++)
+            for(int i=-1; i < currentTable.Count(); i++)
             {
                 //PHONE
                 Label label = new Label();
                 label.HorizontalAlignment = HorizontalAlignment.Left;
                 label.VerticalAlignment = VerticalAlignment.Center;
                 label.Foreground = Brushes.White;
-                label.FontSize = 18;
-                label.Content = currentTable[i].phone;
+                label.FontSize = i == -1 ? 18 : 16;
+                label.Content = i == -1 ? "Телефон" : currentTable[i].phone;
                 Grid.SetColumn(label, 0);
 
                 //NAME
@@ -80,8 +82,8 @@ namespace okimisan_app.Screens
                 label2.HorizontalAlignment = HorizontalAlignment.Left;
                 label2.VerticalAlignment = VerticalAlignment.Center;
                 label2.Foreground = Brushes.White;
-                label2.FontSize = 18;
-                label2.Content = currentTable[i].name;
+                label2.FontSize = i == -1 ? 18 : 16;
+                label2.Content = i == -1 ? "Имя" : currentTable[i].name;
                 Grid.SetColumn(label2, 1);
 
                 //ADDRESS
@@ -89,8 +91,8 @@ namespace okimisan_app.Screens
                 label3.HorizontalAlignment = HorizontalAlignment.Left;
                 label3.VerticalAlignment = VerticalAlignment.Center;
                 label3.Foreground = Brushes.White;
-                label3.FontSize = 18;
-                label3.Content = currentTable[i].street;
+                label3.FontSize = i == -1 ? 18 : 16;
+                label3.Content = i == -1 ? "Адрес" : currentTable[i].street;
                 Grid.SetColumn(label3, 2);
 
                 //DISCOUNT
@@ -98,8 +100,8 @@ namespace okimisan_app.Screens
                 label4.HorizontalAlignment = HorizontalAlignment.Right;
                 label4.VerticalAlignment = VerticalAlignment.Center;
                 label4.Foreground = Brushes.White;
-                label4.FontSize = 18;
-                label4.Content = currentTable[i].discount.ToString()+'%';
+                label4.FontSize = i == -1 ? 18 : 16;
+                label4.Content = i == -1 ? "Скидка" : currentTable[i].discount.ToString()+'%';
                 Grid.SetColumn(label4, 3);
 
                 //ORDERS
@@ -107,8 +109,8 @@ namespace okimisan_app.Screens
                 label5.HorizontalAlignment = HorizontalAlignment.Right;
                 label5.VerticalAlignment = VerticalAlignment.Center;
                 label5.Foreground = Brushes.White;
-                label5.FontSize = 18;
-                label5.Content = currentTable[i].orders;
+                label5.FontSize = i == -1 ? 18 : 16;
+                label5.Content = i == -1 ? "Кол-во З." : currentTable[i].orders.ToString();
                 Grid.SetColumn(label5, 4);
 
                 //LastOrder
@@ -116,29 +118,17 @@ namespace okimisan_app.Screens
                 label6.HorizontalAlignment = HorizontalAlignment.Left;
                 label6.VerticalAlignment = VerticalAlignment.Center;
                 label6.Foreground = Brushes.White;
-                label6.FontSize = 18;
-                label6.Content = currentTable[i].last_order;
+                label6.FontSize = i == -1 ? 18 : 16;
+                label6.Content = i == -1 ? "Посл. З." : currentTable[i].last_order;
                 Grid.SetColumn(label6, 5);
-
-                //ButtonsGrid
-                Grid grid = new Grid();
-                grid.HorizontalAlignment = HorizontalAlignment.Right;
-                Grid.SetColumn(grid, 6);
 
                 //RECTANGLE
                 Rectangle rect = new Rectangle();
-                rect.StrokeThickness = 1;
+                rect.StrokeThickness = i == -1 ? 3 : 1;
                 rect.Stroke = Brushes.White;
                 Grid.SetColumnSpan(rect, 7);
-
                 Grid newGrid = new Grid();
-                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(150, GridUnitType.Pixel) });
-                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(160, GridUnitType.Pixel) });
-                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(600, GridUnitType.Pixel) });
-                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(80, GridUnitType.Pixel) });
-                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(60, GridUnitType.Pixel) });
-                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Pixel) });
-                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                AddColumnDefinitions(newGrid);
                 newGrid.MaxWidth = si.VirtualScreen.Width * contentProcent;
                 newGrid.Children.Add(rect);
                 newGrid.Children.Add(label);
@@ -147,9 +137,8 @@ namespace okimisan_app.Screens
                 newGrid.Children.Add(label4);
                 newGrid.Children.Add(label5);
                 newGrid.Children.Add(label6);
-                newGrid.Children.Add(grid);
                 table.Children.Add(newGrid);
-                Grid.SetRow(newGrid, i);
+                Grid.SetRow(newGrid, i+1);
             }
         }
 
@@ -176,6 +165,16 @@ namespace okimisan_app.Screens
         private void updatePaginatorInfo()
         {
             PaginatorInfo.Content = string.Format("{0}/{1}", currentPage, maxPage);
+        }
+
+        private void AddColumnDefinitions(Grid grid)
+        {
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(150, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(160, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(90, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(90, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(90, GridUnitType.Pixel) });
         }
     }
 }
