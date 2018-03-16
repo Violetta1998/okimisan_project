@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:okimisan_app.Screens"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="1100" d:DesignWidth="1500"
       Title="OrderList">
+
     <Grid Background="Black">
         <Grid>
             <Grid.RowDefinitions>
@@ -16,11 +17,13 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="85"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="45"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
@@ -32,8 +35,7 @@
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
                 <ColumnDefinition Width="465"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
+
             </Grid.ColumnDefinitions>
 
             <Label Content="Список заказов" Foreground="#958568" FontSize="14pt" Grid.Column="2" Grid.Row="0"/>
@@ -42,6 +44,81 @@
 
             <Label Content="Содержит продукцию" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="3"/>
             <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="Дата заказа" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="5"/>
+            <Label Content="Номер заказа" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="8"/>
+
+            <Label Content="Скидка по заказу" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="11"/>
+            <Label Content="Время заказа" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="14"/>
+
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1.5*" MaxWidth="150"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1.5*" MaxWidth="150"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Foreground="White" Content="От" FontSize="14pt" Grid.Column="2" Grid.Row="6"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="7" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="До" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="6"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="7" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Foreground="White" Content="От" FontSize="14pt" Grid.Column="2" Grid.Row="9"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="10" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="До" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="9"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="10" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Foreground="White" Content="От" FontSize="14pt" Grid.Column="2" Grid.Row="12"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="13" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="До" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="12"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="13" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Foreground="White" Content="От" FontSize="14pt" Grid.Column="2" Grid.Row="15"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="16" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
+
+            <Label Content="До" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="16"/>
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="16" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
+
+
+            <Label Foreground="White" Content="Бонусы"  MaxWidth="100" FontSize="14pt" Grid.Column="2" Grid.Row="17" HorizontalAlignment="Left"/>
+            <ComboBox Grid.Row="18" Grid.Column="2" Height="35" BorderBrush="Black" FontSize="12pt" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="Бонус" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="Акция" Foreground="Black" Background="White" BorderBrush="Black"/>
+                <ComboBoxItem Content="Подарок" Foreground="Black" Background="White" BorderBrush="Black"/>
+            </ComboBox>
+
+            <DataGrid x:Name="dataGrid" Grid.Column="6" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>
