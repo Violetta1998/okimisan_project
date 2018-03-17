@@ -82,6 +82,21 @@ namespace okimisan_app.Managers
 
 
 /*
+ * private void UpdateCellValue(string id, string columnName, string value)
+{
+    using (System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(@"UPDATE Customers SET " + columnName + " = ? WHERE CustomerID = ?"))
+    {
+        command.Parameters.Add(new System.Data.OleDb.OleDbParameter("@columnValue", value));
+        command.Parameters.Add(new System.Data.OleDb.OleDbParameter("@customerId", id));
+        command.Connection = new System.Data.OleDb.OleDbConnection(connectionString);
+        command.Connection.Open();
+        command.ExecuteNonQuery();
+        command.Connection.Close();
+    }
+    SelectData();
+}
+ * 
+ * 
  * OleDbDataAdapter dAdapter = new OleDbDataAdapter("select * from roll_client", connParam);
             OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
 

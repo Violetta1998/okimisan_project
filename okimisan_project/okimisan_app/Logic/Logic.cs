@@ -41,15 +41,21 @@ namespace okimisan_app.Logic
 
         public Auth auth;
         public General general;
+        public Clients clients;
 
         public Logic()
         {
             auth = new Auth();
             general = new General();
+            clients = new Clients();
 
             auth.onAuth = () => {
                 if (auth.isAuth)
+<<<<<<< Updated upstream
                     general.currentPage = General.PAGES.CreateOrder;
+=======
+                    general.currentPage = General.PAGES.ClientsList;
+>>>>>>> Stashed changes
             };
 
             auth.onUnAuth = () =>

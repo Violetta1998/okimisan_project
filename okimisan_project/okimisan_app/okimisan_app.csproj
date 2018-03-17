@@ -64,6 +64,7 @@
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Client.cs" />
+    <Compile Include="Logic\Clients.cs" />
     <Compile Include="Managers\AuthManager.cs" />
     <Compile Include="Managers\DataBaseManager.cs" />
     <Compile Include="Screens\Auth.xaml.cs">
@@ -72,14 +73,17 @@
     <Compile Include="Screens\CreateOrder.xaml.cs">
       <DependentUpon>CreateOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\EditClient.xaml.cs">
+      <DependentUpon>EditClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\Main1.xaml.cs">
       <DependentUpon>Main1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Screens\OrderList.xaml.cs">
       <DependentUpon>OrderList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Screens\UserList.xaml.cs">
-      <DependentUpon>UserList.xaml</DependentUpon>
+    <Compile Include="Screens\ClientsList.xaml.cs">
+      <DependentUpon>ClientsList.xaml</DependentUpon>
     </Compile>
     <Page Include="ActivatorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +113,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Screens\EditClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Screens\Main1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Screens\UserList.xaml">
+    <Page Include="Screens\ClientsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
