@@ -51,11 +51,7 @@ namespace okimisan_app.Logic
 
             auth.onAuth = () => {
                 if (auth.isAuth)
-<<<<<<< Updated upstream
-                    general.currentPage = General.PAGES.CreateOrder;
-=======
                     general.currentPage = General.PAGES.ClientsList;
->>>>>>> Stashed changes
             };
 
             auth.onUnAuth = () =>

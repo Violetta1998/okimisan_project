@@ -119,7 +119,7 @@ namespace okimisan_app.Screens
                 }
             });
         }
-        
+
         private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             phonePlaceHolder.Visibility = phoneTextBox.Text.Equals(string.Empty) ? Visibility.Visible : Visibility.Collapsed;        
@@ -181,6 +181,15 @@ namespace okimisan_app.Screens
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(90, GridUnitType.Pixel) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(90, GridUnitType.Pixel) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(90, GridUnitType.Pixel) });
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(logic =>
+            {
+                logic.clients.selectedClient = logic.clients.clients[0];
+                logic.general.currentModalPage = Logic.General.MODAL_PAGES.ClientEdit;
+            });
         }
     }
 }

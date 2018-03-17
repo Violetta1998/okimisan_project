@@ -33,9 +33,18 @@ namespace okimisan_app.Screens
             });
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Apply_Button_Click(object sender, RoutedEventArgs e)
         {
             Logic.Logic.execute(l => l.clients.editMode = !l.clients.editMode);
+        }
+
+        private void Exit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(l =>
+            {
+                l.clients.selectedClient = null;
+                l.general.currentModalPage = Logic.General.MODAL_PAGES.None;
+            });
         }
     }
 }

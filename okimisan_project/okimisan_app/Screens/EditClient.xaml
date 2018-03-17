@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:okimisan_app.Screens"
       mc:Ignorable="d" 
-      d:DesignHeight="520" d:DesignWidth="600"
+      Height="520" Width="600"
       Title="EditClient">
 
     <Grid Background="Transparent">
@@ -17,7 +17,7 @@
         <Rectangle Grid.RowSpan="3" Stroke="Black" StrokeThickness="0" RadiusX="50" RadiusY="50" Fill="Black" />
         <Grid Grid.Row="0" x:Name="header" >
             <Label x:Name="HeaderLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20">Редактирование</Label>
-            <Button Width="50" Height="50"  HorizontalAlignment="Right" Margin="0,0,25,0" Background="Transparent" BorderBrush="Transparent">
+            <Button Width="50" Height="50" Click="Exit_Button_Click" HorizontalAlignment="Right" Margin="0,0,25,0" Background="Transparent" BorderBrush="Transparent">
                 <Rectangle Stroke="White" Width="45" Height="45" StrokeThickness="5"   />
             </Button>
         </Grid>
@@ -128,7 +128,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="2" Margin="0,0,0,25">
-            <Button Background="Blue" Width="200" Height="40" Click="Button_Click" >
+            <Button Background="Blue" Width="200" Height="40" Click="Apply_Button_Click" >
                 <Label Foreground="White" FontSize="16">Принять изменения</Label>
             </Button>
         </Grid>

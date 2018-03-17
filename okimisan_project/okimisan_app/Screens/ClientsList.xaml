@@ -31,6 +31,7 @@
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Background="Transparent"  BorderBrush="Transparent" x:Name="LeftArrow" Click="LeftArrow_Click">
                     <Image Source="/okimisan_app;component/Resources/LeftArrowIcon.png" />
@@ -39,6 +40,7 @@
                 <Button Grid.Column="2" Background="Transparent" BorderBrush="Transparent" x:Name="RightArrow" Click="RightArrow_Click">
                     <Image Source="/okimisan_app;component/Resources/RightArrowIcon.png" />
                 </Button>
+                <Button Click="Button_Click" Grid.Column="3"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="0" x:Name="table" SizeChanged="table_SizeChanged">
