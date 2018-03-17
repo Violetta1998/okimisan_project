@@ -29,10 +29,10 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="2*" MinWidth="100"/>
+                <ColumnDefinition Width="1*" MinWidth="100"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
@@ -63,14 +63,14 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="2*" MinWidth="100"/>
+                <ColumnDefinition Width="1*" MinWidth="100"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="100"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="100"/>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
@@ -116,12 +116,12 @@
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="2*" MinWidth="100"/>
+                <ColumnDefinition Width="1*" MinWidth="100"/>
                 <ColumnDefinition Width="3*" MaxWidth="410" MinWidth="200"/>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -167,12 +167,12 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="1.5*" MinWidth="100" MaxWidth="150"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="1.5*" MinWidth="100" MaxWidth="150"/>
-                <ColumnDefinition Width="2*" MinWidth="100"/>
+                <ColumnDefinition Width="1*" MinWidth="100"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
@@ -223,10 +223,10 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="2*" MinWidth="100"/>
+                <ColumnDefinition Width="1*" MinWidth="100"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
