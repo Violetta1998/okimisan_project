@@ -29,10 +29,10 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="465"/>
+                <ColumnDefinition Width="2*" MinWidth="100"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
@@ -45,7 +45,7 @@
             <Label Content="Номер телефона" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="3"/>
             <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
 
-            
+   
             <Label Content="Примечания" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="5"/>
             <RichTextBox HorizontalAlignment="Stretch" Grid.Row="6" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
 
@@ -63,13 +63,14 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="3*" MaxWidth="300"/>
-                <ColumnDefinition Width="465"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
+                <ColumnDefinition Width="2*" MinWidth="100"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="100"/>
-                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="100"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
@@ -115,13 +116,12 @@
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="3*" MaxWidth="300"/>
-                <ColumnDefinition Width="465"/>
-                <ColumnDefinition Width="1.5*" MaxWidth="410" MinWidth="150"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="100"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
+                <ColumnDefinition Width="2*" MinWidth="100"/>
+                <ColumnDefinition Width="3*" MaxWidth="410" MinWidth="200"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -167,12 +167,15 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="1.5*" MaxWidth="150"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="1.5*" MinWidth="100" MaxWidth="150"/>
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="1.5*" MaxWidth="150"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1.5*" MinWidth="100" MaxWidth="150"/>
+                <ColumnDefinition Width="2*" MinWidth="100"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
             </Grid.ColumnDefinitions>
             
             <Label Foreground="White" Content="Стол" FontSize="14pt" Grid.Column="2" Grid.Row="7"/>
@@ -220,10 +223,10 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="465"/>
+                <ColumnDefinition Width="2*" MinWidth="100"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
