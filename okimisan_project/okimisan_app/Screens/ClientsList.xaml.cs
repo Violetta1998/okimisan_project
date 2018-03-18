@@ -41,6 +41,11 @@ namespace okimisan_app.Screens
             maxPage = (DataBaseManager.getInstance().clients.Count() / itemCount) + (DataBaseManager.getInstance().clients.Count() % itemCount > 0 ? 1 : 0);
             updatePaginatorInfo();
 
+            DataBaseManager.getInstance().clientUpdated += (s, e) =>
+            {
+                UpdatePage(currentPage);
+            };
+
             Logic.Logic.onLogicUpdate(l =>
             {
                 for (int i = -1; i < l.clients.clients.Count(); i++)

@@ -28,11 +28,11 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Margin="12.5,0,12.5,0">
                 <Label Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,0,0,0">Телефон:</Label>
-                <TextBox Height="30" VerticalAlignment="Top" Margin="0,32,0,0"></TextBox>
+                <TextBox x:Name="phone" Height="30" VerticalAlignment="Top" Margin="0,32,0,0"></TextBox>
                 <Label Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,64,0,0">Имя:</Label>
-                <TextBox Height="30" VerticalAlignment="Top" Margin="0,96,0,0"></TextBox>
-                <Label Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,128,0,0">Кол-во заказов: 0</Label>
-                <Label Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,160,0,0">Последнего заказ: -</Label>
+                <TextBox x:Name="name" Height="30" VerticalAlignment="Top" Margin="0,96,0,0"></TextBox>
+                <Label x:Name="ordersCount" Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,128,0,0">Кол-во заказов: 0</Label>
+                <Label x:Name="lastOrder" Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,160,0,0">Последнего заказ: -</Label>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -46,18 +46,18 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" Margin="12.5,0,12.5,0">
                         <Label Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,0,0,0">Адрес:</Label>
-                        <TextBox Height="30" VerticalAlignment="Top" Margin="0,32,0,0"></TextBox>
-                        <Label Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,32,0,0">Улица</Label>
+                        <TextBox x:Name="street" Height="30" VerticalAlignment="Top" Margin="0,32,0,0" TextChanged="street_TextChanged"></TextBox>
+                        <Label x:Name="streetPlaceholder" IsHitTestVisible="False" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,32,0,0">Улица</Label>
                         <Grid Height="30" VerticalAlignment="Top"  Margin="0,64,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Дом</Label>
-                            <TextBox Grid.Column="2" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Постройка</Label>
+                            <TextBox x:Name="house" Grid.Column="0" Height="30" VerticalAlignment="Top"  TextChanged="house_TextChanged"></TextBox>
+                            <Label x:Name="housePlaceholder"  IsHitTestVisible="False" Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Дом</Label>
+                            <TextBox x:Name="build" Grid.Column="2" Height="30" VerticalAlignment="Top"  TextChanged="build_TextChanged"></TextBox>
+                            <Label x:Name="buildPlaceholder"  IsHitTestVisible="False" Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Постройка</Label>
                         </Grid>
                         <Grid Height="30" VerticalAlignment="Top"  Margin="0,96,0,0">
                             <Grid.ColumnDefinitions>
@@ -65,10 +65,10 @@
                                 <ColumnDefinition Width="2"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Ворота</Label>
-                            <TextBox Grid.Column="2" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Этаж</Label>
+                            <TextBox x:Name="gateway" Grid.Column="0" Height="30" VerticalAlignment="Top"  TextChanged="gateway_TextChanged"></TextBox>
+                            <Label x:Name="gatewayPlaceholder"  IsHitTestVisible="False" Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Ворота</Label>
+                            <TextBox x:Name="floor"  Grid.Column="2" Height="30" VerticalAlignment="Top"  TextChanged="floor_TextChanged"></TextBox>
+                            <Label x:Name="floorPlaceholder" IsHitTestVisible="False" Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Этаж</Label>
                         </Grid>
                         <Grid Height="30" VerticalAlignment="Top"  Margin="0,128,0,0">
                             <Grid.ColumnDefinitions>
@@ -76,26 +76,26 @@
                                 <ColumnDefinition Width="2"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Квартира</Label>
-                            <TextBox Grid.Column="2" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Домофон</Label>
+                            <TextBox x:Name="room" Grid.Column="0" Height="30" VerticalAlignment="Top"  TextChanged="room_TextChanged"></TextBox>
+                            <Label x:Name="roomPlaceholder"  IsHitTestVisible="False" Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Квартира</Label>
+                            <TextBox x:Name="intercom" Grid.Column="2" Height="30" VerticalAlignment="Top"  TextChanged="intercom_TextChanged"></TextBox>
+                            <Label x:Name="intercomPlaceholder"  IsHitTestVisible="False" Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Домофон</Label>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1" Margin="12.5,0,12.5,0">
                         <Label Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,0,0,0">Дополнительный адрес:</Label>
-                        <TextBox Height="30" VerticalAlignment="Top" Margin="0,32,0,0"></TextBox>
-                        <Label Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,32,0,0">Улица</Label>
+                        <TextBox x:Name="street2" Height="30" VerticalAlignment="Top" Margin="0,32,0,0" TextChanged="street2_TextChanged"></TextBox>
+                        <Label x:Name="street2Placeholder"  IsHitTestVisible="False" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,32,0,0">Улица</Label>
                         <Grid Height="30" VerticalAlignment="Top"  Margin="0,64,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Дом</Label>
-                            <TextBox Grid.Column="2" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Постройка</Label>
+                            <TextBox x:Name="house2" Grid.Column="0" Height="30" VerticalAlignment="Top" TextChanged="house2_TextChanged"></TextBox>
+                            <Label x:Name="house2Placeholder"  IsHitTestVisible="False" Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Дом</Label>
+                            <TextBox x:Name="build2" Grid.Column="2" Height="30" VerticalAlignment="Top" TextChanged="build2_TextChanged"></TextBox>
+                            <Label x:Name="build2Placeholder"  IsHitTestVisible="False" Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Постройка</Label>
                         </Grid>
                         <Grid Height="30" VerticalAlignment="Top"  Margin="0,96,0,0">
                             <Grid.ColumnDefinitions>
@@ -103,10 +103,10 @@
                                 <ColumnDefinition Width="2"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Ворота</Label>
-                            <TextBox Grid.Column="2" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Этаж</Label>
+                            <TextBox x:Name="gateway2" Grid.Column="0" Height="30" VerticalAlignment="Top" TextChanged="gateway2_TextChanged"></TextBox>
+                            <Label x:Name="gateway2Placeholder"  IsHitTestVisible="False" Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Ворота</Label>
+                            <TextBox x:Name="floor2" Grid.Column="2" Height="30" VerticalAlignment="Top" TextChanged="floor2_TextChanged"></TextBox>
+                            <Label x:Name="floor2Placeholder"  IsHitTestVisible="False" Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Этаж</Label>
                         </Grid>
                         <Grid Height="30" VerticalAlignment="Top"  Margin="0,128,0,0">
                             <Grid.ColumnDefinitions>
@@ -114,16 +114,16 @@
                                 <ColumnDefinition Width="2"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Квартира</Label>
-                            <TextBox Grid.Column="2" Height="30" VerticalAlignment="Top"></TextBox>
-                            <Label Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Домофон</Label>
+                            <TextBox x:Name="room2" Grid.Column="0" Height="30" VerticalAlignment="Top" TextChanged="room2_TextChanged"></TextBox>
+                            <Label x:Name="room2Placeholder" IsHitTestVisible="False" Grid.Column="0" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Квартира</Label>
+                            <TextBox x:Name="intercom2" Grid.Column="2" Height="30" VerticalAlignment="Top" TextChanged="intercom2_TextChanged"></TextBox>
+                            <Label x:Name="intercom2Placeholder" IsHitTestVisible="False" Grid.Column="2" Height="30" Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Домофон</Label>
                         </Grid>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Label Height="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Дополнительная информация:</Label>
-                    <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" Background="White" Foreground="Black" Margin="12.5,37.5,12.5,12.5" />
+                    <RichTextBox x:Name="more" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" Background="White" Foreground="Black" Margin="12.5,37.5,12.5,12.5" />
                 </Grid>
             </Grid>
         </Grid>

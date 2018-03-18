@@ -28,10 +28,17 @@ namespace okimisan_app.Managers
         {
             connParam = ConfigurationManager.AppSettings["DBConnect"] + (new FileInfo(ConfigurationManager.AppSettings["DBName"])).FullName;
             conn = new OleDbConnection(connParam);
+            updateClients();
+        }
+
+        public void updateClients()
+        {
             clients = getClients();
+            clientUpdated(new object(), new EventArgs());
         }
 
         public List<Client> clients;
+        public EventHandler clientUpdated = (s, e) => { };
         public List<Client> getClients()
         {
             List<Client> clients = new List<Client>();
@@ -77,6 +84,128 @@ namespace okimisan_app.Managers
 
             return clients;
         }   
+
+        public void saveClient(Client client)
+        {
+            if (clients.Where(x => x.id == client.id).Count()>0)
+            {
+                //editindb
+                #region connectbuilder
+                string sql = string.Format("UPDATE {0} SET", ClientTable);
+                if (!client.name.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " name=\"", client.name, "\",");
+                }
+                if (!client.phone.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " phone=\"", client.phone, "\",");
+                }
+                if (!client.street.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " street=\"", client.street, "\",");
+                }
+                if (!client.house.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " house=\"", client.house, "\",");
+                }
+                if (!client.build.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " build=\"", client.build, "\",");
+                }
+                if (!client.gateway.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " gateway=", client.gateway, ",");
+                }
+                if (!client.floor.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " floor=", client.floor, ",");
+                }
+                if (!client.room.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " room=", client.room, ",");
+                }
+                if (!client.intercom.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " intercom=\"", client.intercom, "\",");
+                }
+                if (!client.discount.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " discount=", client.discount, ",");
+                }
+                if (!client.last_order.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " last_order=\"", client.last_order, "\",");
+                }
+                if (!client.orders.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " orders=", client.orders, ",");
+                }
+                if (!client.blocked.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " blocked=", client.blocked, ",");
+                }
+                if (!client.deleted.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " deleted=", client.deleted, ",");
+                }
+                if (!client.street2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " street2=\"", client.street2, "\",");
+                }
+                if (!client.house2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " house2=\"", client.house2, "\",");
+                }
+                if (!client.build2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " build2=\"", client.build2, "\",");
+                }
+                if (!client.gateway2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " gateway2=", client.gateway2, ",");
+                }
+                if (!client.floor2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " floor2=", client.floor2, ",");
+                }
+                if (!client.room2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " room2=", client.room2, ",");
+                }
+                if (!client.intercom2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}{1}{2}{3}", sql, " intercom2=\"", client.intercom2, "\",");
+                }
+                sql = sql.Remove(sql.Length - 1, 1);
+                sql = string.Format("{0}{1}{2}", sql, " WHERE ID=", client.id);
+                #endregion connectbuilder
+                OleDbConnection conn = null;
+                try
+                {
+                    conn = new OleDbConnection(connParam);
+                    conn.Open();
+
+                    OleDbCommand cmd =
+                        new OleDbCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                //  catch (Exception e)
+                //  {
+                //      Response.Write(e.Message);
+                //      Response.End();
+                //  }
+                finally
+                {
+                    if (conn != null) conn.Close();
+                }
+            }
+            else
+            {
+                //addtodatabase
+            }
+
+            updateClients();
+        }
     }
 }
 
