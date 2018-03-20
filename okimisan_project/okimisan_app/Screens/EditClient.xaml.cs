@@ -73,7 +73,7 @@ namespace okimisan_app.Screens
                 l.clients.selectedClient.room2 = room2.Text;
                 l.clients.selectedClient.intercom2 = intercom2.Text;
 
-                DataBaseManager.getInstance().saveClient(l.clients.selectedClient);                
+                DataBaseManager.getInstance().saveClient(l, l.clients.selectedClient);                
 
                 l.clients.selectedClient = null;
                 l.general.currentModalPage = Logic.General.MODAL_PAGES.None;

@@ -38,16 +38,10 @@ namespace okimisan_app.Screens
                 table.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
             }
 
-            maxPage = (DataBaseManager.getInstance().clients.Count() / itemCount) + (DataBaseManager.getInstance().clients.Count() % itemCount > 0 ? 1 : 0);
-            updatePaginatorInfo();
-
-            DataBaseManager.getInstance().clientUpdated += (s, e) =>
-            {
-                UpdatePage(currentPage);
-            };
-
             Logic.Logic.onLogicUpdate(l =>
             {
+                table.Children.Clear();
+                l.clients.clients = l.clients.allClients.Where(x => true).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
                 for (int i = -1; i < l.clients.clients.Count(); i++)
                 {
                     //PHONE
@@ -122,6 +116,8 @@ namespace okimisan_app.Screens
                     table.Children.Add(newGrid);
                     Grid.SetRow(newGrid, i + 1);
                 }
+                maxPage = (l.clients.allClients.Count() / itemCount) + (l.clients.allClients.Count() % itemCount > 0 ? 1 : 0);
+                updatePaginatorInfo(l.clients.currentPage);
             });
         }
 
@@ -129,51 +125,45 @@ namespace okimisan_app.Screens
         {
             phonePlaceHolder.Visibility = phoneTextBox.Text.Equals(string.Empty) ? Visibility.Visible : Visibility.Collapsed;        
         }
-
-        private int currentPage = 1;
+        
         private int maxPage = 0;
 
         private void table_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            UpdatePage(currentPage);
-        }
-
-        private void UpdatePage()
-        {
-            UpdatePage(currentPage);
+            Logic.Logic.execute(l => l.clients.currentPage = l.clients.currentPage);
         }
 
         private void UpdatePage(int page)
-        {
-            table.Children.Clear();
-
+        {          
             Logic.Logic.execute(l =>
             {
-                l.clients.clients = DataBaseManager.getInstance().clients.Where(x => true).Skip(itemCount * (page - 1)).Take(itemCount).ToArray();
+                l.clients.currentPage = page;
             });            
         }
 
         private void RightArrow_Click(object sender, RoutedEventArgs e)
         {
-            if (currentPage + 1 <= maxPage)
+            Logic.Logic.execute(l =>
             {
-                currentPage++;
-                updatePaginatorInfo();
-                UpdatePage();
-            }
+                if (l.clients.currentPage + 1 <= maxPage)
+                {
+                    l.clients.currentPage++;
+                }
+            });
         }
 
         private void LeftArrow_Click(object sender, RoutedEventArgs e)
         {
-            if (currentPage - 1 >= 0)
+            Logic.Logic.execute(l =>
             {
-                currentPage--;
-                updatePaginatorInfo();
-                UpdatePage();
-            }
+                if (l.clients.currentPage - 1 >= 0)
+                {
+                    l.clients.currentPage--;
+                }
+            });
         }
 
-        private void updatePaginatorInfo()
+        private void updatePaginatorInfo(int currentPage)
         {
             PaginatorInfo.Content = string.Format("{0}/{1}", currentPage, maxPage);
         }
