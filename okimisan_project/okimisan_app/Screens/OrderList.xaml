@@ -32,14 +32,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="45"/>
                 <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="2*" MaxWidth="300" MinWidth="200"/>
                 <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="465"/>
-                <ColumnDefinition Width="1.5*"  MaxWidth="200" MinWidth="200"/>
-
             </Grid.ColumnDefinitions>
 
             <Label Content="Список заказов" Foreground="#958568" FontSize="14pt" Grid.Column="2" Grid.Row="0"/>
-            <Label Content="Номер телефона" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="1"/>
+            <Label Content="Телефон клиента" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="1"/>
             <TextBox HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
 
             <Label Content="Содержит продукцию" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="3"/>
@@ -51,6 +49,7 @@
             <Label Content="Скидка по заказу" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="11"/>
             <Label Content="Время заказа" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="14"/>
 
+            <Grid Grid.Column="3" x:Name="table" SizeChanged="table_SizeChanged" Margin="10,2,-808,-100" Grid.RowSpan="15" RenderTransformOrigin="0.502,0.58" Grid.Row="1"/>
         </Grid>
 
         <Grid>
@@ -87,7 +86,7 @@
             </Grid.ColumnDefinitions>
 
             <Label Foreground="White" Content="От" FontSize="14pt" Grid.Column="2" Grid.Row="6"/>
-            <TextBox HorizontalAlignment="Stretch" Grid.Row="7" Grid.Column="2" FontSize="14pt" VerticalAlignment="Stretch" />
+            <TextBox HorizontalAlignment="Stretch" Grid.Row="7" Grid.Column="2" FontSize="14pt" VerticalAlignment="Bottom" Height="36" />
 
             <Label Content="До" Foreground="White" FontSize="14pt" Grid.Column="4" Grid.Row="6"/>
             <TextBox HorizontalAlignment="Stretch" Grid.Row="7" Grid.Column="4" FontSize="14pt" VerticalAlignment="Stretch" />
@@ -118,7 +117,10 @@
                 <ComboBoxItem Content="Подарок" Foreground="Black" Background="White" BorderBrush="Black"/>
             </ComboBox>
 
-            <DataGrid x:Name="dataGrid" Grid.Column="6" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        </Grid>
+
+        <Grid>
+
 
         </Grid>
     </Grid>
