@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,29 @@ namespace okimisan_app
     /// </summary>
     public partial class ActivatorWindow : Window
     {
+        const string ACTIVATE_PASSWORD = "G7n8GH45Fs";
+        const string HIDDEN_PASSWORD = "AD67Gb8S3N";
+        const string FOLDER_NAME = "Okimisan";
+        const string FILE_NAME = "security.pass";
+
+        private string filePath;
         public ActivatorWindow()
         {
             InitializeComponent();
+
+            string appData = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
+            var folderPath = System.IO.Path.Combine(appData, "Roaming", FOLDER_NAME);
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+            filePath = System.IO.Path.Combine(appData, "Roaming", FOLDER_NAME, FILE_NAME);
+            if (File.Exists(filePath))
+            {
+                var hiddenPassword = File.ReadAllText(filePath);
+                if (hiddenPassword.Equals(HIDDEN_PASSWORD))
+                {
+                    Continue();
+                }
+            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -32,10 +53,10 @@ namespace okimisan_app
 
         public void Process()
         {
-            if (textBox.Text.Equals("slowno"))
+            if (textBox.Text.Equals(ACTIVATE_PASSWORD))
             {
-                new AppWindow().Show();
-                this.Close();
+                File.WriteAllText(filePath, HIDDEN_PASSWORD);
+                Continue();
             }
             else
             {
@@ -50,6 +71,12 @@ namespace okimisan_app
             {
                 Process();
             }
+        }
+
+        private void Continue()
+        {
+            new AppWindow().Show();
+            this.Close();
         }
     }
 }
