@@ -42,12 +42,14 @@ namespace okimisan_app.Logic
         public Auth auth;
         public General general;
         public Clients clients;
+        public Orders orders;
 
         public Logic()
         {
             auth = new Auth();
             general = new General();
             clients = new Clients();
+            orders = new Orders();
 
             auth.onAuth = () => {
                 if (auth.isAuth)

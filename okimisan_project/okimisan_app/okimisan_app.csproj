@@ -64,7 +64,9 @@
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Client.cs" />
+    <Compile Include="Data\Order.cs" />
     <Compile Include="Logic\Clients.cs" />
+    <Compile Include="Logic\Orders.cs" />
     <Compile Include="Managers\AuthManager.cs" />
     <Compile Include="Managers\DataBaseManager.cs" />
     <Compile Include="Screens\Auth.xaml.cs">

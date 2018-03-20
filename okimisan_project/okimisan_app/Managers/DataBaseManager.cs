@@ -208,5 +208,10 @@ namespace okimisan_app.Managers
             //addtodb
             //coming soon
         }
+
+        public List<Order> getOrders() {
+            List<Order> orders = new List<Order>();
+            return orders;
+        }
     }
 }
