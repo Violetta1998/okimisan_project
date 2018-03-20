@@ -128,7 +128,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="2" Margin="0,0,0,25">
-            <Button Background="Blue" Width="200" Height="40" Click="Apply_Button_Click" >
+            <Button Background="#176760" Width="200" Height="40" Click="Apply_Button_Click" >
                 <Label Foreground="White" FontSize="16">Принять изменения</Label>
             </Button>
         </Grid>
