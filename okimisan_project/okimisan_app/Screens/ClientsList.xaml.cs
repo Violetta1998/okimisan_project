@@ -41,7 +41,7 @@ namespace okimisan_app.Screens
             Logic.Logic.onLogicUpdate(l =>
             {
                 table.Children.Clear();
-                l.clients.clients = l.clients.allClients.Where(x => true).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
+                l.clients.clients = l.clients.allClients.Where(x => true).OrderByDescending(x=>x.id).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
                 for (int i = -1; i < l.clients.clients.Count(); i++)
                 {
                     //PHONE

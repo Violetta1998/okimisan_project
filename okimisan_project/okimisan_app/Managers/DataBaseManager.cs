@@ -100,90 +100,28 @@ namespace okimisan_app.Managers
             //editindb
             #region connectbuilder
             string sql = string.Format("UPDATE {0} SET", ClientTable);
-            if (!client.name.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " name=\"", client.name, "\",");
-            }
-            if (!client.phone.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " phone=\"", client.phone, "\",");
-            }
-            if (!client.street.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " street=\"", client.street, "\",");
-            }
-            if (!client.house.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " house=\"", client.house, "\",");
-            }
-            if (!client.build.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " build=\"", client.build, "\",");
-            }
-            if (!client.gateway.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " gateway=", client.gateway, ",");
-            }
-            if (!client.floor.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " floor=", client.floor, ",");
-            }
-            if (!client.room.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " room=", client.room, ",");
-            }
-            if (!client.intercom.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " intercom=\"", client.intercom, "\",");
-            }
-            if (!client.discount.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " discount=", client.discount, ",");
-            }
-            if (!client.last_order.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " last_order=\"", client.last_order, "\",");
-            }
-            if (!client.orders.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " orders=", client.orders, ",");
-            }
-            if (!client.blocked.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " blocked=", client.blocked, ",");
-            }
-            if (!client.deleted.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " deleted=", client.deleted, ",");
-            }
-            if (!client.street2.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " street2=\"", client.street2, "\",");
-            }
-            if (!client.house2.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " house2=\"", client.house2, "\",");
-            }
-            if (!client.build2.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " build2=\"", client.build2, "\",");
-            }
-            if (!client.gateway2.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " gateway2=", client.gateway2, ",");
-            }
-            if (!client.floor2.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " floor2=", client.floor2, ",");
-            }
-            if (!client.room2.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " room2=", client.room2, ",");
-            }
-            if (!client.intercom2.Equals(string.Empty))
-            {
-                sql = string.Format("{0}{1}{2}{3}", sql, " intercom2=\"", client.intercom2, "\",");
-            }
+            sql = string.Format("{0}{1}{2}{3}", sql, " name=\"", client.name, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " phone=\"", client.phone, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " street=\"", client.street, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " house=\"", client.house, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " build=\"", client.build, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " gateway=", client.gateway.Equals(string.Empty) ? "null" : client.gateway, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " floor=", client.floor.Equals(string.Empty) ? "null" : client.floor, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " room=", client.room.Equals(string.Empty) ? "null" : client.room, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " intercom=\"", client.intercom, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " discount=", client.discount, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " last_order=", client.last_order.Equals(string.Empty) ? "null" : "\"" + client.last_order + "\"", ", ");
+            sql = string.Format("{0}{1}{2}{3}", sql, " orders=", client.orders, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " blocked=", client.blocked, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " deleted=", client.deleted, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " street2=\"", client.street2, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " house2=\"", client.house2, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " build2=\"", client.build2, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " gateway2=", client.gateway2.Equals(string.Empty) ? "null" : client.gateway2, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " floor2=", client.floor.Equals(string.Empty) ? "null" : client.floor, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " room2=", client.room2.Equals(string.Empty) ? "null" : client.room2, ",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " intercom2=\"", client.intercom2, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " more=\"", client.more, "\",");
             sql = sql.Remove(sql.Length - 1, 1);
             sql = string.Format("{0}{1}{2}", sql, " WHERE ID=", client.id);
             #endregion connectbuilder
@@ -206,7 +144,124 @@ namespace okimisan_app.Managers
         public void createClient(Client client)
         {
             //addtodb
-            //coming soon
+            using (OleDbConnection connection = new OleDbConnection(connParam))
+            {
+                string sql = string.Format("insert into {0}(", ClientTable);
+                string sql2 = string.Format(" values (");
+                #region addingBuilder
+                if (!client.name.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}name, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.name);
+                }
+                if (!client.phone.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}phone, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.phone);
+                }
+                if (!client.street.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}street, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.street);
+                }
+                if (!client.house.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}house, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.house);
+                }
+                if (!client.build.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}build, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.build);
+                }
+                if (!client.gateway.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}gateway, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.gateway);
+                }
+                if (!client.floor.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}floor, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.floor);
+                }
+                if (!client.room.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}room, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.room);
+                }
+                if (!client.intercom.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}intercom, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.intercom);
+                }
+                if (!client.street2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}street2, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.street2);
+                }
+                if (!client.house2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}house2, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.house2);
+                }
+                if (!client.build2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}build2, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.build2);
+                }
+                if (!client.gateway2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}gateway2, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.gateway2);
+                }
+                if (!client.floor2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}floor2, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.floor2);
+                }
+                if (!client.room2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}room2, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.room2);
+                }
+                if (!client.intercom2.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}intercom2, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.intercom2);
+                }
+                if (!client.more.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}more, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.more);
+                }
+                if (!client.discount.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}discount, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, client.discount);
+                }
+                if (!client.orders.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}orders, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, 0);
+                }
+                if (!client.blocked.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}blocked, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, 0);
+                }
+                if (!client.deleted.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}deleted, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, 0);
+                }
+                #endregion addingBuilder
+                sql = string.Format("{0}{1}{2}{3}", sql.Remove(sql.Length - 2, 2), ")", sql2.Remove(sql2.Length - 2, 2), ")");
+                using (OleDbCommand command = new OleDbCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

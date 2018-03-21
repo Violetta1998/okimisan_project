@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,8 @@ namespace okimisan_app.Screens
     {
         const string HEADER_LABEL_EDIT = "Редактирование";
         const string HEADER_LABEL_ADD = "Добавление";
+        const string BUTTON_TEXT_EDIT = "Принять изменения";
+        const string BUTTON_TEXT_ADD = "Добавить";
 
         public EditClient()
         {
@@ -30,7 +33,8 @@ namespace okimisan_app.Screens
 
             Logic.Logic.onLogicUpdate(l =>
             {
-                HeaderLabel.Content = l.clients.editMode ? HEADER_LABEL_EDIT : HEADER_LABEL_ADD;                
+                HeaderLabel.Content = l.clients.editMode ? HEADER_LABEL_EDIT : HEADER_LABEL_ADD;
+                applyButtonLabel.Content = l.clients.editMode ? BUTTON_TEXT_EDIT : BUTTON_TEXT_ADD;
                 phone.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.phone : string.Empty;
                 name.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.name : string.Empty;
                 street.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.street : string.Empty;
@@ -47,7 +51,8 @@ namespace okimisan_app.Screens
                 floor2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.floor2 : string.Empty;
                 room2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.room2 : string.Empty;
                 intercom2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.intercom2 : string.Empty;
-
+                more.Document.Blocks.Clear();
+                more.Document.Blocks.Add(new Paragraph(new Run(l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.more : string.Empty)));
             });
         }
 
@@ -72,6 +77,7 @@ namespace okimisan_app.Screens
                 l.clients.selectedClient.floor2 = floor2.Text;
                 l.clients.selectedClient.room2 = room2.Text;
                 l.clients.selectedClient.intercom2 = intercom2.Text;
+                l.clients.selectedClient.more = new TextRange(more.Document.ContentStart, more.Document.ContentEnd).Text;
 
                 DataBaseManager.getInstance().saveClient(l, l.clients.selectedClient);                
 
@@ -88,6 +94,7 @@ namespace okimisan_app.Screens
                 l.general.currentModalPage = Logic.General.MODAL_PAGES.None;
             });
         }
+
         #region placehodlers
         private void street_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -159,5 +166,11 @@ namespace okimisan_app.Screens
             intercom2Placeholder.Visibility = intercom2.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
         }
         #endregion placeholders
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }
