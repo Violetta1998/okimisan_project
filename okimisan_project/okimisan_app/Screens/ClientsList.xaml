@@ -44,7 +44,11 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="0" x:Name="table" SizeChanged="table_SizeChanged">
-            
+            <Grid Height="50" HorizontalAlignment="Right">
+                <Button Background="Transparent">
+                    <Ellipse Width="50" Height="50"/>
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

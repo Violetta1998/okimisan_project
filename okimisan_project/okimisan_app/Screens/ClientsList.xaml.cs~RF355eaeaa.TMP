@@ -41,15 +41,14 @@ namespace okimisan_app.Screens
             Logic.Logic.onLogicUpdate(l =>
             {
                 table.Children.Clear();
-                l.clients.clients = l.clients.allClients.Where(x => !x.deleted).OrderByDescending(x=>x.id).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
+                l.clients.clients = l.clients.allClients.Where(x => true).OrderByDescending(x=>x.id).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
                 for (int i = -1; i < l.clients.clients.Count(); i++)
                 {
-                    double rowHeight = table.RowDefinitions.First().Height.Value - 10;
                     //PHONE
                     Label label = new Label();
                     label.HorizontalAlignment = HorizontalAlignment.Left;
                     label.VerticalAlignment = VerticalAlignment.Center;
-                    label.Foreground = i >= 0 && l.clients.clients[i].blocked ? Brushes.Red : Brushes.White;
+                    label.Foreground = Brushes.White;
                     label.FontSize = i == -1 ? 18 : 16;
                     label.Content = i == -1 ? "Телефон" : l.clients.clients[i].phone;
                     Grid.SetColumn(label, 0);
@@ -58,7 +57,7 @@ namespace okimisan_app.Screens
                     Label label2 = new Label();
                     label2.HorizontalAlignment = HorizontalAlignment.Left;
                     label2.VerticalAlignment = VerticalAlignment.Center;
-                    label2.Foreground = i >= 0 && l.clients.clients[i].blocked ? Brushes.Red : Brushes.White;
+                    label2.Foreground = Brushes.White;
                     label2.FontSize = i == -1 ? 18 : 16;
                     label2.Content = i == -1 ? "Имя" : l.clients.clients[i].name;
                     Grid.SetColumn(label2, 1);
@@ -67,7 +66,7 @@ namespace okimisan_app.Screens
                     Label label3 = new Label();
                     label3.HorizontalAlignment = HorizontalAlignment.Left;
                     label3.VerticalAlignment = VerticalAlignment.Center;
-                    label3.Foreground = i >= 0 && l.clients.clients[i].blocked ? Brushes.Red : Brushes.White;
+                    label3.Foreground = Brushes.White;
                     label3.FontSize = i == -1 ? 18 : 16;
                     label3.Content = i == -1 ? "Адрес" : l.clients.clients[i].street;
                     Grid.SetColumn(label3, 2);
@@ -76,7 +75,7 @@ namespace okimisan_app.Screens
                     Label label4 = new Label();
                     label4.HorizontalAlignment = HorizontalAlignment.Right;
                     label4.VerticalAlignment = VerticalAlignment.Center;
-                    label4.Foreground = i >= 0 && l.clients.clients[i].blocked ? Brushes.Red : Brushes.White;
+                    label4.Foreground = Brushes.White;
                     label4.FontSize = i == -1 ? 18 : 16;
                     label4.Content = i == -1 ? "Скидка" : l.clients.clients[i].discount.ToString() + '%';
                     Grid.SetColumn(label4, 3);
@@ -85,7 +84,7 @@ namespace okimisan_app.Screens
                     Label label5 = new Label();
                     label5.HorizontalAlignment = HorizontalAlignment.Right;
                     label5.VerticalAlignment = VerticalAlignment.Center;
-                    label5.Foreground = i >= 0 && l.clients.clients[i].blocked ? Brushes.Red : Brushes.White;
+                    label5.Foreground = Brushes.White;
                     label5.FontSize = i == -1 ? 18 : 16;
                     label5.Content = i == -1 ? "Кол-во З." : l.clients.clients[i].orders.ToString();
                     Grid.SetColumn(label5, 4);
@@ -94,7 +93,7 @@ namespace okimisan_app.Screens
                     Label label6 = new Label();
                     label6.HorizontalAlignment = HorizontalAlignment.Left;
                     label6.VerticalAlignment = VerticalAlignment.Center;
-                    label6.Foreground = i >= 0 && l.clients.clients[i].blocked ? Brushes.Red : Brushes.White;
+                    label6.Foreground = Brushes.White;
                     label6.FontSize = i == -1 ? 18 : 16;
                     label6.Content = i == -1 ? "Посл. З." : l.clients.clients[i].last_order;
                     Grid.SetColumn(label6, 5);
@@ -116,94 +115,14 @@ namespace okimisan_app.Screens
                     newGrid.Children.Add(label5);
                     newGrid.Children.Add(label6);
 
-                    Ellipse ellipse1 = new Ellipse();
-                    ellipse1.Width = rowHeight;
-                    ellipse1.Height = rowHeight;
-                    ellipse1.Stroke = Brushes.White;
-                    ellipse1.StrokeThickness = 4;
+                    Button button1 = new Button();
 
 
+                    Grid newGrid2 = new Grid();
+                    newGrid2.MaxWidth = si.VirtualScreen.Width * contentProcent;
+                    newGrid.Background = Brushes.Red;
                     table.Children.Add(newGrid);
                     Grid.SetRow(newGrid, i + 1);
-
-                    if (i >= 0)
-                    {
-                        int margin = 10;
-                        int index = i;
-                        Button button1 = new Button();
-                        button1.Background = Brushes.Transparent;
-                        button1.BorderBrush = Brushes.Transparent;
-                        button1.Content = ellipse1;
-                        button1.Margin = new Thickness(0, 0, rowHeight * 2 + margin * 3, 0);
-                        button1.HorizontalAlignment = HorizontalAlignment.Right;
-                        button1.Visibility = l.clients.selectedClient != null && l.clients.clients[i].id == l.clients.selectedClient.id ? Visibility.Visible : Visibility.Collapsed;
-                        button1.Click += (s, e) =>
-                        {
-                            Logic.Logic.execute(logic =>
-                            {
-                                logic.clients.selectedClient.blocked = !logic.clients.selectedClient.blocked;
-                                DataBaseManager.getInstance().saveClient(logic, logic.clients.selectedClient);
-                            });
-                        };
-
-                        Ellipse ellipse2 = new Ellipse();
-                        ellipse2.Width = rowHeight;
-                        ellipse2.Height = rowHeight;
-                        ellipse2.Stroke = Brushes.White;
-                        ellipse2.StrokeThickness = 4;
-
-                        Button button2 = new Button();
-                        button2.Background = Brushes.Transparent;
-                        button2.BorderBrush = Brushes.Transparent;
-                        button2.Content = ellipse2;
-                        button2.Margin = new Thickness(0, 0, rowHeight * 1 + margin * 2, 0);
-                        button2.HorizontalAlignment = HorizontalAlignment.Right;
-                        button2.Visibility = l.clients.selectedClient != null && l.clients.clients[i].id == l.clients.selectedClient.id ? Visibility.Visible : Visibility.Collapsed;
-                        button2.Click += (s, e) =>
-                        {
-                            Logic.Logic.execute(logic =>
-                            {                                
-                                logic.general.currentModalPage = Logic.General.MODAL_PAGES.ClientEdit;
-                            });
-                        };
-
-                        Ellipse ellipse3 = new Ellipse();
-                        ellipse3.Width = rowHeight;
-                        ellipse3.Height = rowHeight;
-                        ellipse3.Stroke = Brushes.White;
-                        ellipse3.StrokeThickness = 4;
-
-                        Button button3 = new Button();
-                        button3.Background = Brushes.Transparent;
-                        button3.BorderBrush = Brushes.Transparent;
-                        button3.Content = ellipse3;
-                        button3.Margin = new Thickness(0, 0, rowHeight * 0 + margin * 1, 0);
-                        button3.HorizontalAlignment = HorizontalAlignment.Right;
-                        button3.Visibility = l.clients.selectedClient != null && l.clients.clients[i].id == l.clients.selectedClient.id ? Visibility.Visible : Visibility.Collapsed;
-                        button3.Click += (s, e) =>
-                        {
-                            Logic.Logic.execute(logic =>
-                            {
-                                logic.clients.selectedClient.deleted = true;
-                                DataBaseManager.getInstance().saveClient(logic, logic.clients.selectedClient);
-                            });
-                        };
-
-                        Grid newGrid2 = new Grid();
-                        newGrid2.MaxWidth = si.VirtualScreen.Width * contentProcent;
-                        newGrid2.Children.Add(button1);
-                        newGrid2.Children.Add(button2);
-                        newGrid2.Children.Add(button3);
-                        newGrid2.Background = l.clients.selectedClient != null && l.clients.clients[i].id == l.clients.selectedClient.id ? new SolidColorBrush(Color.FromArgb(155, 0, 0, 0)) : Brushes.Transparent;
-                        newGrid2.MouseLeftButtonDown += (s, e) =>
-                        {
-                            Logic.Logic.execute(logic => l.clients.selectedClient = logic.clients.clients[index]);
-                        };
-
-                        table.Children.Add(newGrid2);
-                        Grid.SetRow(newGrid2, i + 1);
-                    }                   
-
                 }
                 maxPage = (l.clients.allClients.Count() / itemCount) + (l.clients.allClients.Count() % itemCount > 0 ? 1 : 0);
                 updatePaginatorInfo(l.clients.currentPage);
