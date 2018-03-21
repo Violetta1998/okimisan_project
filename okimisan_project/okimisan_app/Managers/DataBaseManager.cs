@@ -263,5 +263,10 @@ namespace okimisan_app.Managers
                 }
             }
         }
+
+        public List<Order> getOrders() {
+            List<Order> orders = new List<Order>();
+            return orders;
+        }
     }
 }
