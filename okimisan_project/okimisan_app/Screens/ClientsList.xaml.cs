@@ -44,7 +44,9 @@ namespace okimisan_app.Screens
                 l.clients.clients = l.clients.allClients.Where(x => !x.deleted).OrderByDescending(x=>x.id).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
                 for (int i = -1; i < l.clients.clients.Count(); i++)
                 {
-                    double rowHeight = table.RowDefinitions.First().Height.Value - 10;
+                    double rowHeight = (table.RenderSize.Height - 40) / itemCount;
+                    rowHeight = rowHeight > 10 ? rowHeight - 10 : rowHeight > 0 ? rowHeight : 30;
+                    Console.WriteLine(rowHeight);
                     //PHONE
                     Label label = new Label();
                     label.HorizontalAlignment = HorizontalAlignment.Left;
@@ -116,13 +118,6 @@ namespace okimisan_app.Screens
                     newGrid.Children.Add(label5);
                     newGrid.Children.Add(label6);
 
-                    Ellipse ellipse1 = new Ellipse();
-                    ellipse1.Width = rowHeight;
-                    ellipse1.Height = rowHeight;
-                    ellipse1.Stroke = Brushes.White;
-                    ellipse1.StrokeThickness = 4;
-
-
                     table.Children.Add(newGrid);
                     Grid.SetRow(newGrid, i + 1);
 
@@ -130,10 +125,30 @@ namespace okimisan_app.Screens
                     {
                         int margin = 10;
                         int index = i;
+
+                        Ellipse ellipse1 = new Ellipse();
+                        ellipse1.Width = rowHeight;
+                        ellipse1.Height = rowHeight;
+                        ellipse1.Stroke = Brushes.White;
+                        ellipse1.StrokeThickness = 1;
+                        ellipse1.Fill = Brushes.Black;
+
+                        Label buttonLabel1 = new Label();
+                        buttonLabel1.VerticalAlignment = VerticalAlignment.Center;
+                        buttonLabel1.HorizontalAlignment = HorizontalAlignment.Center;
+                        buttonLabel1.Content = "П";
+                        buttonLabel1.Foreground = Brushes.White;
+                        buttonLabel1.IsHitTestVisible = false;
+                        buttonLabel1.FontSize = 14;
+
+                        Grid buttonGrid1 = new Grid();
+                        buttonGrid1.Children.Add(ellipse1);
+                        buttonGrid1.Children.Add(buttonLabel1);
+
                         Button button1 = new Button();
                         button1.Background = Brushes.Transparent;
                         button1.BorderBrush = Brushes.Transparent;
-                        button1.Content = ellipse1;
+                        button1.Content = buttonGrid1;
                         button1.Margin = new Thickness(0, 0, rowHeight * 2 + margin * 3, 0);
                         button1.HorizontalAlignment = HorizontalAlignment.Right;
                         button1.Visibility = l.clients.selectedClient != null && l.clients.clients[i].id == l.clients.selectedClient.id ? Visibility.Visible : Visibility.Collapsed;
@@ -150,12 +165,25 @@ namespace okimisan_app.Screens
                         ellipse2.Width = rowHeight;
                         ellipse2.Height = rowHeight;
                         ellipse2.Stroke = Brushes.White;
-                        ellipse2.StrokeThickness = 4;
+                        ellipse2.StrokeThickness = 1;
+                        ellipse2.Fill = Brushes.Black;
+
+                        Label buttonLabel2 = new Label();
+                        buttonLabel2.VerticalAlignment = VerticalAlignment.Center;
+                        buttonLabel2.HorizontalAlignment = HorizontalAlignment.Center;
+                        buttonLabel2.Content = "Р";
+                        buttonLabel2.Foreground = Brushes.White;
+                        buttonLabel2.IsHitTestVisible = false;
+                        buttonLabel2.FontSize = 14;
+
+                        Grid buttonGrid2 = new Grid();
+                        buttonGrid2.Children.Add(ellipse2);
+                        buttonGrid2.Children.Add(buttonLabel2);
 
                         Button button2 = new Button();
                         button2.Background = Brushes.Transparent;
                         button2.BorderBrush = Brushes.Transparent;
-                        button2.Content = ellipse2;
+                        button2.Content = buttonGrid2;
                         button2.Margin = new Thickness(0, 0, rowHeight * 1 + margin * 2, 0);
                         button2.HorizontalAlignment = HorizontalAlignment.Right;
                         button2.Visibility = l.clients.selectedClient != null && l.clients.clients[i].id == l.clients.selectedClient.id ? Visibility.Visible : Visibility.Collapsed;
@@ -171,12 +199,25 @@ namespace okimisan_app.Screens
                         ellipse3.Width = rowHeight;
                         ellipse3.Height = rowHeight;
                         ellipse3.Stroke = Brushes.White;
-                        ellipse3.StrokeThickness = 4;
+                        ellipse3.StrokeThickness = 1;
+                        ellipse3.Fill = Brushes.Black;
+
+                        Label buttonLabel3 = new Label();
+                        buttonLabel3.VerticalAlignment = VerticalAlignment.Center;
+                        buttonLabel3.HorizontalAlignment = HorizontalAlignment.Center;
+                        buttonLabel3.Content = "У";
+                        buttonLabel3.Foreground = Brushes.White;
+                        buttonLabel3.IsHitTestVisible = false;
+                        buttonLabel3.FontSize = 14;
+
+                        Grid buttonGrid3 = new Grid();
+                        buttonGrid3.Children.Add(ellipse3);
+                        buttonGrid3.Children.Add(buttonLabel3);
 
                         Button button3 = new Button();
                         button3.Background = Brushes.Transparent;
                         button3.BorderBrush = Brushes.Transparent;
-                        button3.Content = ellipse3;
+                        button3.Content = buttonGrid3;
                         button3.Margin = new Thickness(0, 0, rowHeight * 0 + margin * 1, 0);
                         button3.HorizontalAlignment = HorizontalAlignment.Right;
                         button3.Visibility = l.clients.selectedClient != null && l.clients.clients[i].id == l.clients.selectedClient.id ? Visibility.Visible : Visibility.Collapsed;

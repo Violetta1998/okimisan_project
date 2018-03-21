@@ -45,8 +45,13 @@
         </Grid>
         <Grid Grid.Row="0" x:Name="table" SizeChanged="table_SizeChanged">
             <Grid Height="50" HorizontalAlignment="Right">
-                <Button Background="Transparent">
-                    <Ellipse Width="50" Height="50"/>
+                <Button Background="Transparent" BorderBrush="Transparent">
+                    <Grid>
+                        <Ellipse Width="5" Height="5" Stroke="White">
+
+                        </Ellipse>
+                        <Label Foreground="Wheat" VerticalAlignment="Center" HorizontalAlignment="Center">1</Label>
+                    </Grid>
                 </Button>
             </Grid>
         </Grid>
