@@ -264,9 +264,118 @@ namespace okimisan_app.Managers
             }
         }
 
+        //Orders
+        const string OrderTable = "roll_client";
         public List<Order> getOrders() {
             List<Order> orders = new List<Order>();
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", OrderTable), connParam);
+            OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
+
+            DataTable dataTable = new DataTable();
+            dAdapter.Fill(dataTable);
+            for(int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Order order = new Order();
+                order.id = int.Parse(dataTable.Rows[i][0].ToString());
+                order.moment = dataTable.Rows[i][1].ToString();
+                order.id_client = int.Parse(dataTable.Rows[i][2].ToString());
+                order.id_user = int.Parse(dataTable.Rows[i][3].ToString());
+                order.discount = int.Parse(dataTable.Rows[i][4].ToString());
+                order.total = int.Parse(dataTable.Rows[i][5].ToString());
+                order.content = dataTable.Rows[i][6].ToString();
+                order.nightcost = dataTable.Rows[i][7].ToString() == "0" ?  false: true;
+                order.carcost = int.Parse(dataTable.Rows[i][8].ToString());
+                order.cashback = int.Parse(dataTable.Rows[i][9].ToString());
+                order.needcall = dataTable.Rows[i][10].ToString() == "0" ? false : true;
+                order.printed = int.Parse(dataTable.Rows[i][11].ToString());
+                order.confirmed = dataTable.Rows[i][12].ToString() == "0" ? false : true;
+                order.accepted = dataTable.Rows[i][13].ToString() == "0" ? false : true;
+                order.deleted = dataTable.Rows[i][14].ToString() == "0" ? false : true;
+                //is_address_2
+                order.ordernum = int.Parse(dataTable.Rows[i][16].ToString());
+                order.totalmax = int.Parse(dataTable.Rows[i][17].ToString());
+                order.reason = dataTable.Rows[i][18].ToString();
+                order.is_cafe = int.Parse(dataTable.Rows[i][19].ToString());
+                order.id_table = int.Parse(dataTable.Rows[i][20].ToString());
+                order.num = int.Parse(dataTable.Rows[i][21].ToString());
+                order.persons = int.Parse(dataTable.Rows[i][22].ToString());
+                order.content = dataTable.Rows[i][23].ToString();
+
+                orders.Add(order);
+            }
+
             return orders;
+        }
+
+        public void updateOrder(Order order)
+        {
+            //editindb
+            #region connectbuilder
+            string sql = string.Format("UPDATE {0} SET", OrderTable);
+            sql = string.Format("{0}{1}{2}{3}", sql, " id_client=\"", order.id_client, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " id_user=\"", order.id_user, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " moment=\"", order.moment, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " discount=\"", order.discount, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " total=\"", order.total, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " content=\"", order.content, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " nightcost=\"", order.nightcost, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " carcost=\"", order.carcost, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " cashback=\"", order.cashback, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " needcall=\"", order.needcall, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " printed=\"", order.printed, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " confirmed=\"", order.confirmed, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " accepted=\"", order.accepted, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " deleted=\"", order.deleted, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " is_address2=\"", order.is_address2, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " ordernum=\"", order.ordernum, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " totalmax=\"", order.totalmax, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " reason=\"", order.reason, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " is_cafe=\"", order.is_cafe, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " id_table=\"", order.id_table, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " num=\"", order.num, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " persons=\"", order.persons, "\",");
+            sql = string.Format("{0}{1}{2}{3}", sql, " username=\"", order.username, "\",");
+            sql = sql.Remove(sql.Length - 1, 1);
+            sql = string.Format("{0}{1}{2}", sql, " WHERE ID=", order.id);
+            #endregion connectbuilder
+            OleDbConnection conn = null;
+            try
+            {
+                conn = new OleDbConnection(connParam);
+                conn.Open();
+
+                OleDbCommand cmd =
+                    new OleDbCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+        }
+
+        public void updateOrders()
+        {
+            Logic.Logic.execute(l => l.orders.allOrders = getOrders());
+        }
+
+        public void createOrder(Order order)
+        {
+            
+        }
+
+        public void saveOrder(Logic.Logic logic, Order order)
+        {
+            if (logic.orders.allOrders.Where(x => x.id == order.id).Count() > 0)
+            {
+                updateOrder(order);
+            }
+            else
+            {
+                createOrder(order);
+            }
+
+            updateOrders();
         }
     }
 }
