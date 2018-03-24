@@ -22,15 +22,31 @@ namespace okimisan_app.Screens
     /// <summary>
     /// Логика взаимодействия для ClientsList.xaml
     /// </summary>
+
     public partial class ClientsList : Page
     {
+        int[] discounts = new int[] { 0, 5, 10, 20, 30, 50, 100 };
         const int itemCount = 20;
         const int headerHeight = 40;
         const double contentProcent = 0.64;
+        Func<Data.Client, bool> phoneFilter = (x) => true;
+        Func<Data.Client, bool> discountFilter = (x) => true;
 
         public ClientsList()
         {
             InitializeComponent();
+
+            phoneFilter = (x) =>
+            {
+                if (phoneTextBox.Text.Equals(string.Empty))
+                    return true;
+                return x.phone.StartsWith(phoneTextBox.Text);
+            };
+
+            discountFilter = (x) =>
+            {
+                return x.discount >= discounts[discount.SelectedIndex];
+            };
 
             table.RowDefinitions.Add(new RowDefinition { Height = new GridLength(headerHeight, GridUnitType.Pixel) });
             for (int i = 0; i < itemCount; i++)
@@ -41,7 +57,7 @@ namespace okimisan_app.Screens
             Logic.Logic.onLogicUpdate(l =>
             {
                 table.Children.Clear();
-                l.clients.clients = l.clients.allClients.Where(x => !x.deleted).OrderByDescending(x=>x.id).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
+                l.clients.clients = l.clients.allClients.Where(x => !x.deleted).Where(phoneFilter).Where(discountFilter).OrderByDescending(x=>x.id).Skip(itemCount * (l.clients.currentPage - 1)).Take(itemCount).ToArray();
                 for (int i = -1; i < l.clients.clients.Count(); i++)
                 {
                     double rowHeight = (table.RenderSize.Height - 40) / itemCount;
@@ -246,14 +262,20 @@ namespace okimisan_app.Screens
                     }                   
 
                 }
-                maxPage = (l.clients.allClients.Count() / itemCount) + (l.clients.allClients.Count() % itemCount > 0 ? 1 : 0);
+                maxPage = (l.clients.allClients.Where(x=>!x.deleted).Where(phoneFilter).Where(discountFilter).Count() / itemCount) + (l.clients.allClients.Where(phoneFilter).Where(discountFilter).Count() % itemCount > 0 ? 1 : 0);
                 updatePaginatorInfo(l.clients.currentPage);
             });
         }
 
         private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            phonePlaceHolder.Visibility = phoneTextBox.Text.Equals(string.Empty) ? Visibility.Visible : Visibility.Collapsed;        
+            phonePlaceHolder.Visibility = phoneTextBox.Text.Equals(string.Empty) ? Visibility.Visible : Visibility.Collapsed;
+
+            Logic.Logic.execute(l =>
+            {
+                maxPage = (l.clients.allClients.Where(x => !x.deleted).Where(phoneFilter).Where(discountFilter).Count() / itemCount) + (l.clients.allClients.Where(phoneFilter).Where(discountFilter).Count() % itemCount > 0 ? 1 : 0);
+                updatePaginatorInfo(l.clients.currentPage);
+            });
         }
         
         private int maxPage = 0;
@@ -286,7 +308,7 @@ namespace okimisan_app.Screens
         {
             Logic.Logic.execute(l =>
             {
-                if (l.clients.currentPage - 1 >= 0)
+                if (l.clients.currentPage - 1 > 0)
                 {
                     l.clients.currentPage--;
                 }
@@ -315,6 +337,22 @@ namespace okimisan_app.Screens
                 logic.clients.selectedClient = logic.clients.clients[0];
                 logic.general.currentModalPage = Logic.General.MODAL_PAGES.ClientEdit;
             });
+        }
+
+        private void discount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Logic.Logic.execute(l =>
+            {
+                maxPage = (l.clients.allClients.Where(x => !x.deleted).Where(phoneFilter).Where(discountFilter).Count() / itemCount) + (l.clients.allClients.Where(phoneFilter).Where(discountFilter).Count() % itemCount > 0 ? 1 : 0);
+                updatePaginatorInfo(l.clients.currentPage);
+            });
+            
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            phoneTextBox.TextChanged += phoneTextBox_TextChanged;
+            discount.SelectionChanged += discount_SelectionChanged;
         }
     }
 }
