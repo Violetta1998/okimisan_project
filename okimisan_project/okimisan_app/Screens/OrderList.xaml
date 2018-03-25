@@ -32,8 +32,10 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="45"/>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="2*" MaxWidth="300" MinWidth="200"/>
-                <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
+                <ColumnDefinition Width="0.5*" MaxWidth="300" MinWidth="200"/>
+                <ColumnDefinition Width="0.5*" MaxWidth="100"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
             <Label Content="Список заказов" Foreground="#958568" FontSize="14pt" Grid.Column="2" Grid.Row="0"/>
@@ -49,7 +51,22 @@
             <Label Content="Скидка по заказу" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="11"/>
             <Label Content="Время заказа" Foreground="White" FontSize="14pt" Grid.Column="2" Grid.Row="14"/>
 
-            <Grid Grid.Column="3" x:Name="table"  Margin="10,2,-808,-100" Grid.RowSpan="15" RenderTransformOrigin="0.502,0.58" Grid.Row="1"/>
+            <Grid HorizontalAlignment="Stretch"  Grid.Column="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Grid.Row="15" Background="Transparent"  BorderBrush="Transparent" x:Name="LeftArrow" Click="LeftArrow_Click">
+                    <Image Source="/okimisan_app;component/Resources/LeftArrowIcon.png" />
+                </Button>
+                <Label x:Name="PaginatorInfo" Grid.Column="1" Background="Transparent" HorizontalContentAlignment="Center" Content="0/0" Foreground="White"/>
+                <Button Grid.Column="2" Grid.Row="15" Background="Transparent" BorderBrush="Transparent" x:Name="RightArrow" Click="RightArrow_Click">
+                    <Image Source="/okimisan_app;component/Resources/RightArrowIcon.png" />
+                </Button>
+            </Grid>
+           
         </Grid>
 
         <Grid>
@@ -78,9 +95,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="45"/>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="1.5*" MaxWidth="150"/>
+                <ColumnDefinition Width="0.3*" MaxWidth="150"/>
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="1.5*" MaxWidth="150"/>
+                <ColumnDefinition Width="0.3*" MaxWidth="150"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
@@ -120,8 +137,17 @@
         </Grid>
 
         <Grid>
-
-
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="0.5*" MaxWidth="300" MinWidth="200"/>
+                <ColumnDefinition Width="0.5*" MaxWidth="100"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" x:Name="tableOrder" Grid.Column="4" SizeChanged="table_SizeChanged" Margin="20,20,20,20">
+                
+            </Grid>
         </Grid>
     </Grid>
 </Page>

@@ -270,7 +270,7 @@ namespace okimisan_app.Managers
         }
 
         //Orders
-        const string OrderTable = "roll_client";
+        const string OrderTable = "roll_order";
         public List<Order> getOrders() {
             List<Order> orders = new List<Order>();
             OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", OrderTable), connParam);
@@ -281,34 +281,32 @@ namespace okimisan_app.Managers
             for(int i = 0; i < dataTable.Rows.Count; i++)
             {
                 Order order = new Order();
-                order.id = int.Parse(dataTable.Rows[i][0].ToString());
+                order.id = int.Parse(dataTable.Rows[i][0].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][0].ToString());
                 order.moment = dataTable.Rows[i][1].ToString();
-                order.id_client = int.Parse(dataTable.Rows[i][2].ToString());
-                order.id_user = int.Parse(dataTable.Rows[i][3].ToString());
-                order.discount = int.Parse(dataTable.Rows[i][4].ToString());
-                order.total = int.Parse(dataTable.Rows[i][5].ToString());
+                order.id_client = int.Parse(dataTable.Rows[i][2].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][2].ToString());
+                order.id_user = int.Parse(dataTable.Rows[i][3].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][3].ToString());
+                order.discount = int.Parse(dataTable.Rows[i][4].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][4].ToString());
+                order.total = int.Parse(dataTable.Rows[i][5].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][5].ToString());
                 order.content = dataTable.Rows[i][6].ToString();
                 order.nightcost = dataTable.Rows[i][7].ToString() == "0" ?  false: true;
-                order.carcost = int.Parse(dataTable.Rows[i][8].ToString());
-                order.cashback = int.Parse(dataTable.Rows[i][9].ToString());
+                order.carcost = int.Parse(dataTable.Rows[i][8].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][8].ToString());
+                order.cashback = int.Parse(dataTable.Rows[i][9].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][9].ToString());
                 order.needcall = dataTable.Rows[i][10].ToString() == "0" ? false : true;
-                order.printed = int.Parse(dataTable.Rows[i][11].ToString());
+                order.printed = int.Parse(dataTable.Rows[i][11].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][11].ToString());
                 order.confirmed = dataTable.Rows[i][12].ToString() == "0" ? false : true;
                 order.accepted = dataTable.Rows[i][13].ToString() == "0" ? false : true;
                 order.deleted = dataTable.Rows[i][14].ToString() == "0" ? false : true;
                 //is_address_2
-                order.ordernum = int.Parse(dataTable.Rows[i][16].ToString());
-                order.totalmax = int.Parse(dataTable.Rows[i][17].ToString());
+                order.ordernum = int.Parse(dataTable.Rows[i][16].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][16].ToString());
+                order.totalmax = int.Parse(dataTable.Rows[i][17].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][17].ToString());
                 order.reason = dataTable.Rows[i][18].ToString();
-                order.is_cafe = int.Parse(dataTable.Rows[i][19].ToString());
-                order.id_table = int.Parse(dataTable.Rows[i][20].ToString());
-                order.num = int.Parse(dataTable.Rows[i][21].ToString());
-                order.persons = int.Parse(dataTable.Rows[i][22].ToString());
-                order.content = dataTable.Rows[i][23].ToString();
-
+                order.is_cafe = int.Parse(dataTable.Rows[i][19].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][19].ToString());
+                order.id_table = int.Parse(dataTable.Rows[i][20].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][20].ToString());
+                order.num = int.Parse(dataTable.Rows[i][21].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][21].ToString());
+                order.persons = int.Parse(dataTable.Rows[i][22].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][22].ToString());
+                order.username = dataTable.Rows[i][23].ToString();
                 orders.Add(order);
             }
-
             return orders;
         }
 
