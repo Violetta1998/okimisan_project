@@ -249,6 +249,11 @@ namespace okimisan_app.Managers
                     sql = string.Format("{0}blocked, ", sql);
                     sql2 = string.Format("{0}\"{1}\", ", sql2, 0);
                 }
+                if (!client.orders.Equals(string.Empty))
+                {
+                    sql = string.Format("{0}orders, ", sql);
+                    sql2 = string.Format("{0}\"{1}\", ", sql2, 0);
+                }
                 if (!client.deleted.Equals(string.Empty))
                 {
                     sql = string.Format("{0}deleted, ", sql);

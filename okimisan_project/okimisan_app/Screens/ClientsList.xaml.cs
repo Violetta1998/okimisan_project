@@ -206,7 +206,8 @@ namespace okimisan_app.Screens
                         button2.Click += (s, e) =>
                         {
                             Logic.Logic.execute(logic =>
-                            {                                
+                            {
+                                logic.clients.editMode = true;
                                 logic.general.currentModalPage = Logic.General.MODAL_PAGES.ClientEdit;
                             });
                         };
@@ -330,15 +331,6 @@ namespace okimisan_app.Screens
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(90, GridUnitType.Pixel) });
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Logic.Logic.execute(logic =>
-            {
-                logic.clients.selectedClient = logic.clients.clients[0];
-                logic.general.currentModalPage = Logic.General.MODAL_PAGES.ClientEdit;
-            });
-        }
-
         private void discount_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Logic.Logic.execute(l =>
@@ -353,6 +345,16 @@ namespace okimisan_app.Screens
         {
             phoneTextBox.TextChanged += phoneTextBox_TextChanged;
             discount.SelectionChanged += discount_SelectionChanged;
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(logic =>
+            {
+                logic.clients.selectedClient = null;
+                logic.clients.editMode = false;
+                logic.general.currentModalPage = Logic.General.MODAL_PAGES.ClientEdit;
+            });
         }
     }
 }

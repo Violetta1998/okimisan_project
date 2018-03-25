@@ -26,6 +26,9 @@ namespace okimisan_app.Screens
         const string HEADER_LABEL_ADD = "Добавление";
         const string BUTTON_TEXT_EDIT = "Принять изменения";
         const string BUTTON_TEXT_ADD = "Добавить";
+        const string ORDERS_QUALITY_TEXT = "Кол-во заказов: "; 
+        const string LAST_ORDER_TEXT = "Послед заказ: ";
+        private int[] discounts = new int[] { 0, 5, 10, 20, 30, 50, 100 };
 
         public EditClient()
         {
@@ -50,9 +53,12 @@ namespace okimisan_app.Screens
                 gateway2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.gateway2 : string.Empty;
                 floor2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.floor2 : string.Empty;
                 room2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.room2 : string.Empty;
-                intercom2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.intercom2 : string.Empty;
+                intercom2.Text = l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.intercom2 : string.Empty;                
+                discount.SelectedIndex = l.clients.editMode && l.clients.selectedClient != null && discounts.ToList().IndexOf(l.clients.selectedClient.discount) >=0 ? discounts.ToList().IndexOf(l.clients.selectedClient.discount) : 0;
                 more.Document.Blocks.Clear();
                 more.Document.Blocks.Add(new Paragraph(new Run(l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.more : string.Empty)));
+                ordersCount.Content = ORDERS_QUALITY_TEXT + (l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.orders.ToString() : "0");
+                lastOrder.Content = LAST_ORDER_TEXT + (l.clients.editMode && l.clients.selectedClient != null ? l.clients.selectedClient.last_order.ToString() : "-");
             });
         }
 
@@ -78,6 +84,7 @@ namespace okimisan_app.Screens
                 l.clients.selectedClient.room2 = room2.Text;
                 l.clients.selectedClient.intercom2 = intercom2.Text;
                 l.clients.selectedClient.more = new TextRange(more.Document.ContentStart, more.Document.ContentEnd).Text;
+                l.clients.selectedClient.discount = discounts[discount.SelectedIndex];
 
                 DataBaseManager.getInstance().saveClient(l, l.clients.selectedClient);                
 

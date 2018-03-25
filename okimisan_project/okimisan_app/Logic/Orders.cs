@@ -15,7 +15,7 @@ namespace okimisan_app.Logic
             orders = new Order[0];
             selectedOrder = null;
             editMode = true;
-            allOrders = DataBaseManager.getInstance().getOrders();
+           // allOrders = DataBaseManager.getInstance().getOrders();
             currentPage = 1;
         }
         public Order[] orders;
