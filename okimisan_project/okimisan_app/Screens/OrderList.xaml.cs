@@ -24,6 +24,10 @@ namespace okimisan_app.Screens
     /// </summary>
     public partial class OrderList : Page
     {
+        int[] discounts = new int[] { 0, 5, 10, 20, 30, 50, 100 };
+        Func<Data.Client, bool> phoneFilter = (x) => true;
+        Func<Data.Client, bool> discountFilter = (x) => true;
+
         const int itemCount = 10;
         const int headerHeight = 40;
         const double contentProcent = 0.64;
@@ -31,6 +35,18 @@ namespace okimisan_app.Screens
         public OrderList()
         {
             InitializeComponent();
+
+            phoneFilter = (x) =>
+            {
+                if (phoneTextBox.Text.Equals(string.Empty))
+                    return true;
+                return x.phone.StartsWith(phoneTextBox.Text);
+            };
+
+            discountFilter = (x) =>
+            {
+                return x.discount >= discounts[discount.SelectedIndex];
+            };
 
             tableOrder.RowDefinitions.Add(new RowDefinition { Height = new GridLength(headerHeight, GridUnitType.Pixel) });
             for (int i = 0; i < itemCount; i++)
@@ -77,7 +93,7 @@ namespace okimisan_app.Screens
                     {
                         for (int j = 0; j < l.clients.clients.Length; j++)
                         {
-
+                           
                             if (l.orders.orders[i].id_client == l.clients.clients[j].id)
                             {
                                 name = l.clients.clients[j].name;
@@ -90,10 +106,10 @@ namespace okimisan_app.Screens
 
                     //PHONE
                     Label label4 = new Label();
-                    label3.HorizontalAlignment = HorizontalAlignment.Left;
-                    label3.VerticalAlignment = VerticalAlignment.Center;
-                    label3.Foreground = Brushes.White;
-                    label3.FontSize = i == -1 ? 18 : 16;
+                    label4.HorizontalAlignment = HorizontalAlignment.Left;
+                    label4.VerticalAlignment = VerticalAlignment.Center;
+                    label4.Foreground = Brushes.White;
+                    label4.FontSize = i == -1 ? 18 : 16;
                     string phone = "";
                     if (i > 0)
                     {
@@ -107,25 +123,25 @@ namespace okimisan_app.Screens
                         }
                     }
                     
-                    label3.Content = i == -1 ? "Номер телефона клиента" : phone;
+                    label4.Content = i == -1 ? "Номер телефона клиента" : phone;
                     Grid.SetColumn(label4, 3);
 
                     //SUMM
                     Label label5 = new Label();
-                    label3.HorizontalAlignment = HorizontalAlignment.Left;
-                    label3.VerticalAlignment = VerticalAlignment.Center;
-                    label3.Foreground = Brushes.White;
-                    label3.FontSize = i == -1 ? 18 : 16;
-                    label3.Content = i == -1 ? "Сумма заказа" : l.orders.orders[i].total.ToString();
+                    label5.HorizontalAlignment = HorizontalAlignment.Left;
+                    label5.VerticalAlignment = VerticalAlignment.Center;
+                    label5.Foreground = Brushes.White;
+                    label5.FontSize = i == -1 ? 18 : 16;
+                    label5.Content = i == -1 ? "Сумма заказа" : l.orders.orders[i].total.ToString();
                     Grid.SetColumn(label5, 4);
 
                     //DISCOUNT
                     Label label6 = new Label();
-                    label3.HorizontalAlignment = HorizontalAlignment.Left;
-                    label3.VerticalAlignment = VerticalAlignment.Center;
-                    label3.Foreground = Brushes.White;
-                    label3.FontSize = i == -1 ? 18 : 16;
-                    label3.Content = i == -1 ? "Скидка" : l.orders.orders[i].discount.ToString();
+                    label6.HorizontalAlignment = HorizontalAlignment.Left;
+                    label6.VerticalAlignment = VerticalAlignment.Center;
+                    label6.Foreground = Brushes.White;
+                    label6.FontSize = i == -1 ? 18 : 16;
+                    label6.Content = i == -1 ? "Скидка" : l.orders.orders[i].discount.ToString();
                     Grid.SetColumn(label6, 5);
 
                     //RECTANGLE
@@ -195,12 +211,34 @@ namespace okimisan_app.Screens
 
         private void AddColumnDefinitions(Grid grid)
         {
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(180, GridUnitType.Pixel) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(50, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(190, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Pixel) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(150, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120, GridUnitType.Pixel) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Pixel) });
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(logic =>
+            {
+                logic.orders.selectedOrder = null;
+                logic.orders.editMode = false;
+                logic.general.currentModalPage = Logic.General.MODAL_PAGES.ClientEdit;
+            });
+        }
+
+        //private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    phonePlaceHolder.Visibility = phoneTextBox.Text.Equals(string.Empty) ? Visibility.Visible : Visibility.Collapsed;
+
+        //    Logic.Logic.execute(l =>
+        //    {
+        //        maxPage = (l.orders.allOrders.Where(x => !x.deleted).Where(phoneFilter).Where(discountFilter).Count() / itemCount) + (l.orders.allOrders.Where(phoneFilter).Where(discountFilter).Count() % itemCount > 0 ? 1 : 0);
+        //        updatePaginatorInfo(l.orders.currentPage);
+        //    });
+        //}
+
     }
-   }
+}
