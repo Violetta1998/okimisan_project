@@ -30,9 +30,9 @@ namespace okimisan_app.Managers
             conn = new OleDbConnection(connParam);
         }
 
-        public void updateClients()
+        public void updateClients(Logic.Logic logic)
         {
-            Logic.Logic.execute(l => l.clients.allClients = getClients());
+            logic.clients.allClients = getClients();
         }
         
         public List<Client> getClients()
@@ -92,7 +92,7 @@ namespace okimisan_app.Managers
                 createClient(client);
             }
 
-            updateClients();
+            updateClients(logic);
         }
 
         public void updateClient(Client client)

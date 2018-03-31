@@ -44,7 +44,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label x:Name="ordersCount" Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,128,0,0">Кол-во заказов: 0</Label>
-                <Label x:Name="lastOrder" Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,160,0,0">Послед заказ: 16.05.2018</Label>
+                <Label x:Name="lastOrder" Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,160,0,0">Послед заказ: -</Label>
                 <Label Foreground="White" Height="30" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Margin="0,190,0,0">Скидка:</Label>
                 <ComboBox Height="30" VerticalContentAlignment="Center" x:Name="discount" BorderBrush="Black" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,220,0,0" >
                     <ComboBoxItem Content="0%" Foreground="Black" Background="White" BorderBrush="Black"/>

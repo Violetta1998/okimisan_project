@@ -17,11 +17,15 @@ namespace okimisan_app.Logic
             editMode = true;
             allOrders = DataBaseManager.getInstance().getOrders();
             currentPage = 1;
+            isFilterHide = false;
+            isInfoHide = false;
         }
         public Order[] orders;
         public Order selectedOrder;
         public bool editMode;
         public List<Order> allOrders;
         public int currentPage;
+        public bool isFilterHide;
+        public bool isInfoHide;
     }
 }
