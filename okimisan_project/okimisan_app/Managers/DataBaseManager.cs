@@ -14,6 +14,12 @@ namespace okimisan_app.Managers
     public class DataBaseManager
     {
         const string ClientTable = "roll_client";
+        const string OrderItemTable = "roll_order_item";
+        const string OrderLogTable = "roll_order_log";
+        const string UserTable = "roll_user";
+        const string AddinTable = "roll_addin";
+        const string OrderItemAddinTable = "roll_order_item_addin";
+
         private static DataBaseManager _instance;
         public static DataBaseManager getInstance()
         {
@@ -379,6 +385,142 @@ namespace okimisan_app.Managers
             }
 
             updateOrders();
+        }
+
+        public List<OrderItem> getOrderItems()
+        {
+            List<OrderItem> orderItems = new List<OrderItem>();
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", OrderItemTable), connParam);
+            OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
+
+            DataTable dataTable = new DataTable();
+            dAdapter.Fill(dataTable);
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                OrderItem orderItem = new OrderItem();
+                orderItem.id = int.Parse(dataTable.Rows[i][0].ToString());
+                orderItem.order_id = int.Parse(dataTable.Rows[i][1].ToString());
+                orderItem.name = dataTable.Rows[i][2].ToString();
+                orderItem.id_catalog = int.Parse(dataTable.Rows[i][3].ToString());
+                orderItem.size = int.Parse(dataTable.Rows[i][4].ToString());
+                orderItem.price = int.Parse(dataTable.Rows[i][5].ToString());
+                orderItem.count = int.Parse(dataTable.Rows[i][6].ToString());
+                orderItem.addin_price = int.Parse(dataTable.Rows[i][7].ToString());
+                orderItem.addin_count = int.Parse(dataTable.Rows[i][8].ToString());
+                orderItem.bonus = !dataTable.Rows[i][9].ToString().Equals("0");
+                orderItem.uid = int.Parse(dataTable.Rows[i][10].ToString());
+                orderItem.coins = int.Parse(dataTable.Rows[i][11].ToString());
+
+                orderItems.Add(orderItem);
+            }
+
+            return orderItems;
+        }
+
+        public List<OrderLog> getOrderLogs()
+        {
+            List<OrderLog> orderLogs = new List<OrderLog>();
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", OrderLogTable), connParam);
+            OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
+
+            DataTable dataTable = new DataTable();
+            dAdapter.Fill(dataTable);
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                OrderLog orderLog = new OrderLog();
+                orderLog.id = int.Parse(dataTable.Rows[i][0].ToString());
+                orderLog.id_order = int.Parse(dataTable.Rows[i][1].ToString());
+                orderLog.id_user = int.Parse(dataTable.Rows[i][2].ToString());
+                orderLog.version = int.Parse(!dataTable.Rows[i][3].ToString().Equals(string.Empty) ? dataTable.Rows[i][3].ToString() : "0");
+                orderLog.moment = dataTable.Rows[i][4].ToString();
+                orderLog.action = dataTable.Rows[i][5].ToString();
+                orderLog.name = dataTable.Rows[i][6].ToString();
+                orderLog.value_was = dataTable.Rows[i][7].ToString();
+                orderLog.value_now = dataTable.Rows[i][8].ToString();
+                orderLog.difference = int.Parse(!dataTable.Rows[i][9].ToString().Equals(string.Empty) ? dataTable.Rows[i][9].ToString() : "0");
+                orderLog.host = dataTable.Rows[i][10].ToString();
+                orderLog.uploaded = !dataTable.Rows[i][11].ToString().Equals("0");
+
+                orderLogs.Add(orderLog);
+            }
+
+            return orderLogs;
+        }
+
+        public List<Data.User> getUsers()
+        {
+            List<Data.User> users = new List<Data.User>();
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", UserTable), connParam);
+            OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
+
+            DataTable dataTable = new DataTable();
+            dAdapter.Fill(dataTable);
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Data.User user = new Data.User();
+                user.id = int.Parse(dataTable.Rows[i][0].ToString());
+                user.name = dataTable.Rows[i][1].ToString();
+                user.account = dataTable.Rows[i][2].ToString();
+                user.password = dataTable.Rows[i][3].ToString();
+                user.id_usergroup = int.Parse(dataTable.Rows[i][4].ToString());
+                user.active = !dataTable.Rows[i][5].ToString().Equals("0");
+
+                users.Add(user);
+            }
+
+            return users;
+        }
+
+        public List<Addin> getAddins()
+        {
+            List<Addin> addins = new List<Addin>();
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", AddinTable), connParam);
+            OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
+
+            DataTable dataTable = new DataTable();
+            dAdapter.Fill(dataTable);
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Addin addin = new Addin();
+                addin.id = int.Parse(dataTable.Rows[i][0].ToString());
+                addin.uid = dataTable.Rows[i][1].ToString();
+                addin.name = dataTable.Rows[i][2].ToString();
+                addin.id_raw = int.Parse(dataTable.Rows[i][3].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][3].ToString());
+                addin.weight = dataTable.Rows[i][4].ToString();
+                addin.visibled = !dataTable.Rows[i][5].ToString().Equals("0");
+
+                addins.Add(addin);
+            }
+
+            return addins;
+        }
+
+        public List<OrderItemAddin> getOrderItemAddins()
+        {
+            List<OrderItemAddin> orderItemAddins = new List<OrderItemAddin>();
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", OrderItemAddinTable), connParam);
+            OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
+
+            DataTable dataTable = new DataTable();
+            dAdapter.Fill(dataTable);
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                OrderItemAddin orderItemAddin = new OrderItemAddin();
+                orderItemAddin.id = int.Parse(dataTable.Rows[i][0].ToString());
+                orderItemAddin.id_order = int.Parse(dataTable.Rows[i][1].ToString());
+                orderItemAddin.id_order_item = int.Parse(dataTable.Rows[i][2].ToString());
+                orderItemAddin.id_addin = int.Parse(dataTable.Rows[i][3].ToString());
+                orderItemAddin.remove = !dataTable.Rows[i][4].ToString().Equals("0");
+
+                orderItemAddins.Add(orderItemAddin);
+            }
+
+            return orderItemAddins;
         }
     }
 }

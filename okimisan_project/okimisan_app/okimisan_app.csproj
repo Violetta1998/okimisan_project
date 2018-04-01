@@ -63,10 +63,16 @@
     <Compile Include="Components\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Addin.cs" />
     <Compile Include="Data\Client.cs" />
+    <Compile Include="Data\Logic\Products.cs" />
     <Compile Include="Data\Order.cs" />
-    <Compile Include="Logic\Clients.cs" />
-    <Compile Include="Logic\Orders.cs" />
+    <Compile Include="Data\Logic\Clients.cs" />
+    <Compile Include="Data\Logic\Orders.cs" />
+    <Compile Include="Data\OrderItem.cs" />
+    <Compile Include="Data\OrderItemAddin.cs" />
+    <Compile Include="Data\OrderLog.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="Managers\AuthManager.cs" />
     <Compile Include="Managers\DataBaseManager.cs" />
     <Compile Include="Screens\Auth.xaml.cs">
@@ -143,9 +149,9 @@
     <Compile Include="AppWindow.xaml.cs">
       <DependentUpon>AppWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Logic\Auth.cs" />
-    <Compile Include="Logic\General.cs" />
-    <Compile Include="Logic\Logic.cs" />
+    <Compile Include="Data\Logic\Auth.cs" />
+    <Compile Include="Data\Logic\General.cs" />
+    <Compile Include="Data\Logic\Logic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
