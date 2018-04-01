@@ -380,5 +380,62 @@ namespace okimisan_app.Managers
 
             updateOrders();
         }
+
+        //Categories
+        const string categoryTable = "roll_category";
+        public List<Category> getCategories()
+        {
+            List<Category> cat = new List<Category>();
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(string.Format("select * from {0}", categoryTable), connParam);
+            OleDbCommandBuilder cBuilder = new OleDbCommandBuilder(dAdapter);
+
+            DataTable dataTable = new DataTable();
+            dAdapter.Fill(dataTable);
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Category category = new Category();
+                category.id = int.Parse(dataTable.Rows[i][0].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][0].ToString());
+                category.uid = int.Parse(dataTable.Rows[i][1].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][1].ToString());
+                category.name = dataTable.Rows[i][2].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][2].ToString();
+                category.id_category = int.Parse(dataTable.Rows[i][3].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][3].ToString());
+                category.size1 = dataTable.Rows[i][6].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][6].ToString();
+                category.ready = dataTable.Rows[i][9].ToString().Equals("0") ? false : true;
+                category.visible = dataTable.Rows[i][10].ToString().Equals("0") ? false : true ;
+                category.has_addins = int.Parse(dataTable.Rows[i][11].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][11].ToString());
+                category.addins1 = int.Parse(dataTable.Rows[i][12].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][12].ToString());
+                category.addins2 = int.Parse(dataTable.Rows[i][13].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][13].ToString());
+                category.addins3 = int.Parse(dataTable.Rows[i][14].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][14].ToString());
+                category.sort = int.Parse(dataTable.Rows[i][15].ToString().Equals(string.Empty) ? "0" : dataTable.Rows[i][15].ToString());
+                cat.Add(category);
+            }
+            return cat;
+
+        }
+        public void updateCategories()
+        {
+            Logic.Logic.execute(l => l.categories.allCategory = getCategories());
+        }
+        public void updateCategory(Category cat)
+        {
+
+        }
+        public void createCategory(Category cat)
+        {
+
+        }
+        public void saveCategory(Logic.Logic logic, Category cat)
+        {
+            if (logic.orders.allOrders.Where(x => x.id == cat.id).Count() > 0)
+            {
+                updateCategory(cat);
+            }
+            else
+            {
+                createCategory(cat);
+            }
+
+            updateCategories();
+        }
     }
 }

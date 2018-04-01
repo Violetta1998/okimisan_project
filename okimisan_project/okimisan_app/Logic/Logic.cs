@@ -43,6 +43,7 @@ namespace okimisan_app.Logic
         public General general;
         public Clients clients;
         public Orders orders;
+        public Categories categories;
 
         public Logic()
         {
@@ -50,6 +51,7 @@ namespace okimisan_app.Logic
             general = new General();
             clients = new Clients();
             orders = new Orders();
+            categories = new Categories();
 
             auth.onAuth = () => {
                 if (auth.isAuth)

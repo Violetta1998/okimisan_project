@@ -1,25 +1,24 @@
 ﻿using okimisan_app.Data;
-using okimisan_app.Managers;
 using System.Collections.Generic;
 
 namespace okimisan_app.Logic
 {
-    public class Orders
+    public class Categories
     {
-        public Orders()
+        public Categories()
         {
-            orders = new Order[0];
+            category = new Category[0];
             selectedOrder = null;
             editMode = true;
-            allOrders = DataBaseManager.getInstance().getOrders();
+          //  allCategory = DataBaseManager.getInstance().allCategories();
             currentPage = 1;
             isFilterHide = false;
             isInfoHide = false;
         }
-        public Order[] orders;
-        public Order selectedOrder;
+        public Category[] category;
+        public Category selectedOrder;
         public bool editMode;
-        public List<Order> allOrders;
+        public List<Category> allCategory;
         public int currentPage;
         public bool isFilterHide;
         public bool isInfoHide;
