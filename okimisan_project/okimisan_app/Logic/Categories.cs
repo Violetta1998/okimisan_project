@@ -1,4 +1,5 @@
 ﻿using okimisan_app.Data;
+using okimisan_app.Managers;
 using System.Collections.Generic;
 
 namespace okimisan_app.Logic
@@ -10,7 +11,7 @@ namespace okimisan_app.Logic
             category = new Category[0];
             selectedOrder = null;
             editMode = true;
-          //  allCategory = DataBaseManager.getInstance().allCategories();
+            allCategory = DataBaseManager.getInstance().getCategories();
             currentPage = 1;
             isFilterHide = false;
             isInfoHide = false;

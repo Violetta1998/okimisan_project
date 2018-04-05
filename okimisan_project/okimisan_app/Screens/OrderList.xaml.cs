@@ -184,7 +184,7 @@ namespace okimisan_app.Screens
                             label.Margin = new Thickness(0, index * rowHeight / 4, 0, 0);
                             label.Foreground = Brushes.White;
                             label.FontSize = 11;
-                            label.Content = composition[index].name;
+                            label.Content = composition[index].getFullName(l);
                             CompositionGrid.Children.Add(label);
                         }                     
                     }

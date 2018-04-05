@@ -15,6 +15,6 @@ namespace okimisan_app.Logic
             allAddins = DataBaseManager.getInstance().getAddins();
         }
 
-        List<Addin> allAddins;
+        public List<Addin> allAddins;
     }
 }

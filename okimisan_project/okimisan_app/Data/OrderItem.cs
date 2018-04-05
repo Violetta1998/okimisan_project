@@ -20,5 +20,21 @@ namespace okimisan_app.Data
         public bool bonus;
         public long uid;
         public int coins;
+
+        public string getFullName(Logic.Logic logic)
+        {
+            string fullName = string.Format("{0} шт., {1}({2}), ", size, name, id_catalog);
+
+            var addins = logic.orders.allOrderItemAddins.Where(x => x.id_order_item == id);
+
+            foreach (var addin in addins)
+            {
+                fullName = string.Format("{0}{1}{2}, ", fullName, addin.remove ? "-" : "+", logic.products.allAddins.Where(x => x.id == addin.id_addin).First());
+            }
+
+            fullName = string.Format("{0}{1} руб.", fullName, price * count);
+
+            return fullName;
+        }
     }
 }
