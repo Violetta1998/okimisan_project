@@ -44,8 +44,8 @@ namespace okimisan_app
             });
         }
 
-        private Logic.General.PAGES[] _main1Screens = new Logic.General.PAGES[] { Logic.General.PAGES.CreateOrder, Logic.General.PAGES.None, Logic.General.PAGES.ClientsList, Logic.General.PAGES.OrderList };
-        private Logic.General.PAGES[] _availableScreens = new Logic.General.PAGES[] { Logic.General.PAGES.Auth, Logic.General.PAGES.Main1, Logic.General.PAGES.None, Logic.General.PAGES.CreateOrder, Logic.General.PAGES.ClientsList, Logic.General.PAGES.OrderList };
+        private Logic.General.PAGES[] _main1Screens = new Logic.General.PAGES[] { Logic.General.PAGES.CreateOrder, Logic.General.PAGES.None, Logic.General.PAGES.ClientsList, Logic.General.PAGES.OrderList, Logic.General.PAGES.Categories };
+        private Logic.General.PAGES[] _availableScreens = new Logic.General.PAGES[] { Logic.General.PAGES.Auth, Logic.General.PAGES.Main1, Logic.General.PAGES.None, Logic.General.PAGES.CreateOrder, Logic.General.PAGES.ClientsList, Logic.General.PAGES.OrderList, Logic.General.PAGES.Categories };
         private Logic.General.PAGES currentPage = Logic.General.PAGES.None;
     }
 }

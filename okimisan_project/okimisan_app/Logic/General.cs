@@ -31,6 +31,7 @@ namespace okimisan_app.Logic
             _pages.Add(PAGES.CreateOrder, new Screens.CreateOrder());
             _pages.Add(PAGES.ClientsList, new Screens.ClientsList());
             _pages.Add(PAGES.OrderList, new Screens.OrderList());
+            _pages.Add(PAGES.Categories, new Screens.Categories());
 
             _modalPages.Add(MODAL_PAGES.None, null);
             _modalPages.Add(MODAL_PAGES.ClientEdit, new Screens.EditClient());
@@ -73,7 +74,7 @@ namespace okimisan_app.Logic
 
         public enum PAGES
         {
-            None, Main1, Auth, CreateOrder, ClientsList, OrderList
+            None, Main1, Auth, CreateOrder, ClientsList, OrderList, Categories
         }
 
         public enum MODAL_PAGES
