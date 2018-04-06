@@ -26,10 +26,17 @@ namespace okimisan_app.Screens
     /// </summary>
     public partial class OrderList : Page
     {
-        const int itemCount = 11;
+        const int itemCount = 8;
         const int headerHeight = 40;
         const double contentProcent = 0.64;
 
+        const int MY_PROGRAMM_HEIGHT = 987;
+        const int FONT_SIZE_NORMAL = 13;
+        const int FONT_SIZE_HIGHLIGHT = 15;
+        const int FONT_SIZE_TITLE = 20;
+        const int ADDITIONAL_PANELS_BUTTONS_WIDTH = 25;
+
+        private double additionalPanelsButtonsWidth = 0;
         private bool isFilterHide= true;
         private bool isInfoHide = true;
 
@@ -53,54 +60,68 @@ namespace okimisan_app.Screens
                 for (int i = -1; i < l.orders.orders.Count(); i++)
                 {
                     double rowHeight = (tableOrder.RenderSize.Height - 40) / itemCount;
-                    rowHeight = rowHeight > 10 ? rowHeight - 10 : rowHeight > 0 ? rowHeight : 30;
+                    rowHeight = rowHeight > 10 ? rowHeight - 10 : rowHeight > 0 ? rowHeight : 10;
+
+                    double coef = this.ActualHeight/MY_PROGRAMM_HEIGHT;
+
+                    ScaleTransform scaleTransform = new ScaleTransform(coef, coef);
+
 
                     //ORDER
                     Grid OrderGrid = new Grid();
                     if (i == -1)
                     {
                         Label titleLabel = new Label();
+                        titleLabel.RenderTransform = scaleTransform;
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
                         titleLabel.Foreground = Brushes.White;
-                        titleLabel.FontSize = 18;
+                        titleLabel.FontSize = FONT_SIZE_TITLE;
                         titleLabel.Content = "Заказ";
                         OrderGrid.Children.Add(titleLabel);
                     }else
                     {
                         Label label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(0, 0 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 13;
+                        label.FontSize = FONT_SIZE_HIGHLIGHT;
                         label.Content = string.Format("№{0}", l.orders.orders[i].id);
+                        label.Height = rowHeight;
                         OrderGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 1 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.FontSize = FONT_SIZE_NORMAL;
                         label.Content = l.orders.orders[i].moment;
+                        label.Height = rowHeight;
                         OrderGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 2 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.FontSize = FONT_SIZE_NORMAL;
+                        label.Height = rowHeight;
                         label.Content = string.Format("Сумма: {0} руб", l.orders.orders[i].total);
                         OrderGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 3 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.FontSize = FONT_SIZE_NORMAL;
+                        label.Height = rowHeight;
                         label.Content = string.Format("Скидка: {0}%", l.orders.orders[i].discount);
                         OrderGrid.Children.Add(label);
                     }
@@ -111,10 +132,11 @@ namespace okimisan_app.Screens
                     if (i == -1)
                     {
                         Label titleLabel = new Label();
+                        titleLabel.RenderTransform = scaleTransform;
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
                         titleLabel.Foreground = Brushes.White;
-                        titleLabel.FontSize = 18;
+                        titleLabel.FontSize = FONT_SIZE_TITLE;
                         titleLabel.Content = "Клиент";
                         ClientGrid.Children.Add(titleLabel);
                     }
@@ -123,38 +145,46 @@ namespace okimisan_app.Screens
                         Client client = l.clients.allClients.FirstOrDefault(x => x.id == l.orders.orders[i].id_client);
 
                         Label label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(0, 0 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 13;
+                        label.FontSize = FONT_SIZE_HIGHLIGHT;
+                        label.Height = rowHeight;
                         label.Content = client != null ? client.name : string.Empty;
                         ClientGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 1 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.FontSize = FONT_SIZE_NORMAL;
+                        label.Height = rowHeight;
                         label.Content = client != null ? string.Format("Телефон: {0}", client.phone) : string.Empty;
                         ClientGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 2 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.FontSize = FONT_SIZE_NORMAL;
+                        label.Height = rowHeight;
                         label.Content = client != null ? client.getFirstAddress() : string.Empty;
                         ClientGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 3 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.FontSize = FONT_SIZE_NORMAL;
+                        label.Height = rowHeight;
                         label.Content = client != null ? string.Format("Кол-во заказов: {0}", client.orders) : string.Empty;
                         ClientGrid.Children.Add(label);
                     }
@@ -165,10 +195,11 @@ namespace okimisan_app.Screens
                     if (i == -1)
                     {
                         Label titleLabel = new Label();
+                        titleLabel.RenderTransform = scaleTransform;
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
                         titleLabel.Foreground = Brushes.White;
-                        titleLabel.FontSize = 18;
+                        titleLabel.FontSize = FONT_SIZE_TITLE;
                         titleLabel.Content = "Состав";
                         CompositionGrid.Children.Add(titleLabel);
                     }
@@ -176,14 +207,16 @@ namespace okimisan_app.Screens
                     {
                         List<OrderItem> composition = l.orders.allOrderItems.Where(x => x.order_id == l.orders.orders[i].id).ToList();
 
-                        for (int index=0; index < composition.Count(); index++)
+                        for (int index=0; index < (composition.Count() < 4 ? composition.Count() : 4); index++)
                         {
                             Label label = new Label();
+                            label.RenderTransform = scaleTransform;
                             label.HorizontalAlignment = HorizontalAlignment.Left;
                             label.VerticalAlignment = VerticalAlignment.Top;
                             label.Margin = new Thickness(0, index * rowHeight / 4, 0, 0);
                             label.Foreground = Brushes.White;
-                            label.FontSize = 11;
+                            label.FontSize = FONT_SIZE_NORMAL;
+                            label.Height = rowHeight;
                             label.Content = composition[index].getFullName(l);
                             CompositionGrid.Children.Add(label);
                         }                     
@@ -195,39 +228,45 @@ namespace okimisan_app.Screens
                     if (i == -1)
                     {
                         Label titleLabel = new Label();
+                        titleLabel.RenderTransform = scaleTransform;
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
                         titleLabel.Foreground = Brushes.White;
-                        titleLabel.FontSize = 18;
+                        titleLabel.FontSize = FONT_SIZE_TITLE;
                         titleLabel.Content = "Инфо";
                         InfoGrid.Children.Add(titleLabel);
                     }
                     else
                     {
                         Label label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(0, 0 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 13;
+                        label.FontSize = FONT_SIZE_HIGHLIGHT;
+                        label.Height = rowHeight;
                         label.Content = l.auth.usersFromDB.First(x=>x.id== l.orders.orders[i].id_user).name;
                         InfoGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 1 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.FontSize = FONT_SIZE_NORMAL;
                         label.Content = string.Format("Версия: {0}", l.orders.allOrderLogs.Where(x => x.id_order == l.orders.orders[i].id).Max(x => x.version));
                         InfoGrid.Children.Add(label);
 
                         label = new Label();
+                        label.RenderTransform = scaleTransform;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 2 * rowHeight / 4, 0, 0);
                         label.Foreground = Brushes.White;
-                        label.FontSize = 11;
+                        label.Height = rowHeight;
+                        label.FontSize = FONT_SIZE_NORMAL;
                         label.Content = string.Format("Печать: {0}", l.orders.orders[i].printed);
                         InfoGrid.Children.Add(label);
                     }
@@ -242,9 +281,20 @@ namespace okimisan_app.Screens
 
                     Grid newGrid = new Grid();
                     AddColumnDefinitions(newGrid);
-                    mainColumn.Width = new GridLength(si.VirtualScreen.Width * contentProcent);
-                    additionalColumn1.Width = new GridLength((si.VirtualScreen.Width * (1 - contentProcent)) / 2 - 50);
-                    additionalColumn2.Width = new GridLength((si.VirtualScreen.Width * (1 - contentProcent)) / 2 - 50);
+
+                    double windowWidth = si.VirtualScreen.Width;
+
+                    try
+                    {
+                        if (this.WindowWidth <= double.MaxValue && this.WindowWidth >= double.MinValue)
+                        windowWidth = this.WindowWidth;
+                    }
+                    catch { };
+                    mainColumn.Width = new GridLength(windowWidth * contentProcent);
+                    additionalPanelsButtonsWidth = (windowWidth * (1 - contentProcent)) / 2;                  
+
+                    additionalColumn1.Width = new GridLength(additionalPanelsButtonsWidth);
+                    additionalColumn2.Width = new GridLength(additionalPanelsButtonsWidth);
                     newGrid.Children.Add(rect);
                     newGrid.Children.Add(OrderGrid);
                     newGrid.Children.Add(ClientGrid);
@@ -267,34 +317,30 @@ namespace okimisan_app.Screens
 
         private void updateArrows(Logic.Orders logic)
         {
-            if (logic.isFilterHide!= isFilterHide)
-            {
-                isFilterHide = logic.isFilterHide;
+            double margin = additionalPanelsButtonsWidth - ADDITIONAL_PANELS_BUTTONS_WIDTH - 50;
 
                 animation1 = new ThicknessAnimation();
                 animation1.FillBehavior = FillBehavior.HoldEnd;
-                animation1.From = new Thickness(isFilterHide ? 0 : 225, 0, isFilterHide ? 0 : -225, 0);
-                animation1.To = new Thickness(isFilterHide ? 225 : 0, 0, isFilterHide ? -225 : 0, 0);
-                animation1.Duration = TimeSpan.FromSeconds(0.5);
+                animation1.From = logic.isFilterHide != isFilterHide ? new Thickness(logic.isFilterHide ? 0 : margin, 0, logic.isFilterHide ? 0 : -margin, 0) : new Thickness(FilterGrid1.Margin.Left, 0, FilterGrid1.Margin.Right, 0);
+                animation1.To = new Thickness(logic.isFilterHide ? margin : 0, 0, logic.isFilterHide ? -margin : 0, 0);
+                animation1.Duration = TimeSpan.FromSeconds(logic.isFilterHide != isFilterHide ? 0.5 : 0.01);
 
                 FilterGrid1.BeginAnimation(MarginProperty, animation1, HandoffBehavior.Compose);
-                
-                leftButtonAssist.Content = isFilterHide ? "<" : ">";
-            }
-            if (logic.isInfoHide != isInfoHide)
-            {
-                isInfoHide = logic.isInfoHide;
 
+                leftButtonAssist.Content = logic.isFilterHide ? "<" : ">";
+                isFilterHide = logic.isFilterHide;
+
+            
                 animation2 = new ThicknessAnimation();
                 animation2.FillBehavior = FillBehavior.HoldEnd;
-                animation2.From = new Thickness(isInfoHide ? 0 : -225, 0, isInfoHide ? 0 : 225, 0);
-                animation2.To = new Thickness(isInfoHide ? -225 : 0, 0, isInfoHide ? 225 : 0, 0);
-                animation2.Duration = TimeSpan.FromSeconds(0.5);
+                animation2.From = logic.isInfoHide != isInfoHide ? new Thickness(logic.isInfoHide ? 0 : -margin, 0, logic.isInfoHide ? 0 : margin, 0) :  new Thickness(FilterGrid2.Margin.Left, 0, FilterGrid2.Margin.Right, 0);
+                animation2.To = new Thickness(logic.isInfoHide ? -margin : 0, 0, logic.isInfoHide ? margin : 0, 0);
+                animation2.Duration = TimeSpan.FromSeconds(logic.isInfoHide != isInfoHide ? 0.5 : 0.01);
 
                 FilterGrid2.BeginAnimation(MarginProperty, animation2, HandoffBehavior.Compose);
                 
-                rightButtonAssist.Content = isInfoHide ? ">" : "<";
-            }
+                rightButtonAssist.Content = logic.isInfoHide ? ">" : "<";
+                isInfoHide = logic.isInfoHide;
         }
 
         private void UpdatePage(int page)
@@ -352,6 +398,11 @@ namespace okimisan_app.Screens
         {
             Logic.Logic.execute(l => l.orders.isInfoHide = !l.orders.isInfoHide);
 
+        }
+
+        private void mainForm_LayoutUpdated(object sender, EventArgs e)
+        {
+            var asd = 1;
         }
         //private void phoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
         //{
