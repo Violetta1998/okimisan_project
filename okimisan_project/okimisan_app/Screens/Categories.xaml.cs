@@ -57,13 +57,24 @@ namespace okimisan_app.Screens
                         newGrid.Children.Add(label);
                     }
                     count = 0;
+                    AddRowDedinitions(newGrid);
+                    table.Children.Add(newGrid);
+                    Grid.SetRow(newGrid, i + 1);
                 }
             });  
     }
 
         private void AddRowDedinitions(Grid grid)
         {
-             
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
         }
 
         private void table_SizeChanged(object sender, SizeChangedEventArgs e)
