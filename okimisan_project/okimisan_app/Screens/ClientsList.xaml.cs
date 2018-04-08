@@ -62,7 +62,6 @@ namespace okimisan_app.Screens
                 {
                     double rowHeight = (table.RenderSize.Height - 40) / itemCount;
                     rowHeight = rowHeight > 10 ? rowHeight - 10 : rowHeight > 0 ? rowHeight : 30;
-                    Console.WriteLine(rowHeight);
                     //PHONE
                     Label label = new Label();
                     label.HorizontalAlignment = HorizontalAlignment.Left;

@@ -61,6 +61,11 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1" Margin="50,0,-4,0">
                     <Border Grid.Column="1" CornerRadius="25,0,0,25"  BorderBrush="White" BorderThickness="4" Panel.ZIndex="1" >
+                        <Border BorderBrush="White" BorderThickness="2,0,0,0" Margin="25,0,0,0">
+                            <Grid>
+                                
+                            </Grid>
+                        </Border>
                     </Border>
                     <Button Click="ShowFilterButton_Click" Grid.Column="0"  HorizontalAlignment="Left" Width="25"  Style="{StaticResource TabButton}" >
                         <Label x:Name="leftButtonAssist" Foreground="White">1</Label>
@@ -78,6 +83,48 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1" Margin="-4,0,50,0">
                     <Border Grid.Column="1" CornerRadius="0,25,25,0"  BorderBrush="White" BorderThickness="4" Panel.ZIndex="1" >
+                        <Grid Margin="0,0,25,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,2,1">
+                                <Grid>
+                                    <Label Foreground="White" x:Name="FullCompositionLabel" HorizontalAlignment="Center">Полный состав:</Label>
+                                    <Border BorderBrush="White" BorderThickness="0,1,0,0" Margin="0,30,0,0">
+                                        <ScrollViewer>
+                                            <ScrollViewer.Resources>
+                                                <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}" >
+                                                    <Setter Property="Foreground" Value="White"></Setter>
+                                                </Style>
+                                                <Style TargetType="{x:Type ScrollBar}" >
+                                                    <Setter Property="Background" Value="Black"></Setter>
+                                                </Style>
+                                            </ScrollViewer.Resources>
+                                            <TextBlock x:Name="FullCompositionTextBlock"  Foreground="White" TextWrapping="Wrap" Margin="10,0,0,0"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" BorderBrush="White" BorderThickness="0,1,2,0">
+                                <Grid>
+                                    <Label Foreground="White" x:Name="HistoryLabel" HorizontalAlignment="Center">История изменений:</Label>
+                                    <Border BorderBrush="White" BorderThickness="0,1,0,0" Margin="0,30,0,0">                                        
+                                        <ScrollViewer>
+                                            <ScrollViewer.Resources>
+                                                <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}" >
+                                                    <Setter Property="Foreground" Value="White"></Setter>
+                                                </Style>
+                                                <Style TargetType="{x:Type ScrollBar}" >
+                                                    <Setter Property="Background" Value="Black"></Setter>
+                                                </Style>
+                                            </ScrollViewer.Resources>
+                                            <TextBlock x:Name="HistoryTextBlock"  Foreground="White" TextWrapping="Wrap" Margin="10,0,0,0"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
                     </Border>
                     <Button Click="ShowInfoButton_Click" Grid.Column="0"  HorizontalAlignment="Right" Width="25"  Style="{StaticResource TabButton}" >
                         <Label x:Name="rightButtonAssist"  Foreground="White">1</Label>
