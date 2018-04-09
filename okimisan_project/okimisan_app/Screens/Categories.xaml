@@ -29,6 +29,10 @@
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
+            <Grid Grid.Row="0" x:Name="table" SizeChanged="table_SizeChanged">
+                
+            </Grid>
+
             <Label Content="Наименование" Foreground="White" FontSize="14pt" Grid.Column="1" Grid.Row="2"/>
             <TextBox HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="3"  FontSize="14pt" VerticalAlignment="Stretch"/>
 
