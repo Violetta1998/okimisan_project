@@ -62,8 +62,128 @@
                 <Grid Grid.Row="1" Margin="50,0,-4,0">
                     <Border Grid.Column="1" CornerRadius="25,0,0,25"  BorderBrush="White" BorderThickness="4" Panel.ZIndex="1" >
                         <Border BorderBrush="White" BorderThickness="2,0,0,0" Margin="25,0,0,0">
-                            <Grid>
-                                
+                            <Grid Margin="15,0">
+                                <Label x:Name="DateLabel" Height="30" Foreground="White" Margin="0,0,0,0" VerticalAlignment="Top">Дата заказа:</Label>
+                                <Grid Height="30" x:Name="DateGrid" VerticalAlignment="Top" Margin="0,30,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="15" />
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DatePicker x:Name="DateFrom" Grid.Column="0" VerticalAlignment="Center"/>
+                                    <Label  Foreground="White" Grid.Column="1" VerticalAlignment="Center">-</Label>
+                                    <DatePicker x:Name="DateTo" Grid.Column="2" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Label Height="30" x:Name="TimeLabel" Foreground="White" Margin="0,60,0,0" VerticalAlignment="Top">Время заказа:</Label>
+                                <Grid x:Name="TimeGrid" Height="30" VerticalAlignment="Top" Margin="0,90,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="15" />
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" x:Name="TimeFrom" VerticalAlignment="Center"/>
+                                    <Label  Foreground="White" Grid.Column="1" VerticalAlignment="Center">-</Label>
+                                    <TextBox Grid.Column="2" x:Name="TimeTo" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Label x:Name="NumberLabel" Height="30" Foreground="White" Margin="0,120,0,0" VerticalAlignment="Top">Номер заказа:</Label>
+                                <Grid Height="30" x:Name="NumberGrid" VerticalAlignment="Top" Margin="0,150,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="15" />
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="NumberFrom"  Grid.Column="0" VerticalAlignment="Center"/>
+                                    <Label  Foreground="White" Grid.Column="1" VerticalAlignment="Center">-</Label>
+                                    <TextBox x:Name="NumberTo"  Grid.Column="2" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Label Height="30" x:Name="PhoneLabel"  Margin="0,180,0,0" Foreground="White" VerticalAlignment="Top">Телефон клиента:</Label>
+                                <Grid Height="30" x:Name="PhoneGrid" Margin="0,210,0,0" VerticalAlignment="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox VerticalAlignment="Center" x:Name="PhoneText" Grid.Column="0" Margin="0,0,5,0"/>
+                                    <Button Grid.Column="1" Background="Transparent">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="0" Height="5" Width="5" />
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="2" Height="5" Width="5" />
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="4" Height="5" Width="5" />
+                                            <Border BorderBrush="White" Grid.RowSpan="5" BorderThickness="1"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Label Height="30" Margin="0,240,0,0" x:Name="CategoryLabel" Foreground="White" VerticalAlignment="Top">Содержит категорию продуктов:</Label>
+                                <Grid x:Name="CategoryGrid" Height="30" Margin="0,270,0,0" VerticalAlignment="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox VerticalAlignment="Center" x:Name="CategoryText" Grid.Column="0" Margin="0,0,5,0"/>
+                                    <Button Grid.Column="1" Background="Transparent">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="0" Height="5" Width="5" />
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="2" Height="5" Width="5" />
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="4" Height="5" Width="5" />
+                                            <Border BorderBrush="White" Grid.RowSpan="5" BorderThickness="1"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Label Height="30" Margin="0,300,0,0" x:Name="ProductLabel" Foreground="White" VerticalAlignment="Top">Содержит продукт:</Label>
+                                <Grid Height="30" x:Name="ProductGrid" Margin="0,330,0,0" VerticalAlignment="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox VerticalAlignment="Center" x:Name="ProductText" Grid.Column="0" Margin="0,0,5,0"/>
+                                    <Button Grid.Column="1" Background="Transparent">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="0" Height="5" Width="5" />
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="2" Height="5" Width="5" />
+                                            <Rectangle Stroke="White" StrokeThickness="1" Fill="White" Grid.Row="4" Height="5" Width="5" />
+                                            <Border BorderBrush="White" Grid.RowSpan="5" BorderThickness="1"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Label Height="30" Foreground="White" x:Name="DiscountLabel" Margin="0,360,0,0" VerticalAlignment="Top">Скидка:</Label>
+                                <Grid Height="30" x:Name="DiscountGrid" VerticalAlignment="Top" Margin="0,390,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="15" />
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" x:Name="DiscountFrom" VerticalAlignment="Center"/>
+                                    <Label  Foreground="White" x:Name="DiscountTo" Grid.Column="1" VerticalAlignment="Center">-</Label>
+                                    <TextBox Grid.Column="2" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Grid Height="30" x:Name="DeletedGrid" Margin="0,420,0,0" VerticalAlignment="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label VerticalAlignment="Center" x:Name="DeletedLabel" Foreground="White" Grid.Column="0">Удаленные:</Label>
+                                    <CheckBox VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center"/>
+                                </Grid>
                             </Grid>
                         </Border>
                     </Border>

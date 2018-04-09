@@ -321,6 +321,7 @@ namespace okimisan_app.Screens
                 updatePaginatorInfo(l.orders.currentPage);
                 updateArrows(l.orders);
                 updateOrderInfo(l, rowHeight);
+                updateFilterInfo(l, rowHeight);
             });
         }
         private int maxPage = 0;
@@ -355,6 +356,68 @@ namespace okimisan_app.Screens
 
             rightButtonAssist.Content = logic.isInfoHide ? ">" : "<";
             isInfoHide = logic.isInfoHide;
+        }
+
+        private void updateFilterInfo(Logic.Logic logic, double rowHeight)
+        {
+            rowHeight /= 4;
+
+            DateLabel.Margin = new Thickness(0, rowHeight * 0, 0, 0);
+            DateLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
+
+            DateGrid.Margin = new Thickness(0, rowHeight * 1, 0, 0);
+            DateFrom.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            DateTo.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            DateGrid.Height = rowHeight;
+
+            TimeLabel.Margin = new Thickness(0, rowHeight * 2, 0, 0);
+            TimeLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
+
+            TimeGrid.Margin = new Thickness(0, rowHeight * 3, 0, 0);
+            TimeFrom.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            TimeTo.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            TimeGrid.Height = rowHeight;
+
+            NumberLabel.Margin = new Thickness(0, rowHeight * 4, 0, 0);
+            NumberLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
+
+            NumberGrid.Margin = new Thickness(0, rowHeight * 5, 0, 0);
+            NumberFrom.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            NumberTo.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            NumberGrid.Height = rowHeight;
+
+            PhoneLabel.Margin = new Thickness(0, rowHeight * 6, 0, 0);
+            PhoneLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
+
+            PhoneGrid.Margin = new Thickness(0, rowHeight * 7, 0, 0);
+            PhoneText.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            PhoneGrid.Height = rowHeight;
+
+            CategoryLabel.Margin = new Thickness(0, rowHeight * 8, 0, 0);
+            CategoryLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
+
+            CategoryGrid.Margin = new Thickness(0, rowHeight * 9, 0, 0);
+            CategoryText.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            CategoryGrid.Height = rowHeight;
+
+            ProductLabel.Margin = new Thickness(0, rowHeight * 10, 0, 0);
+            ProductLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
+
+            ProductGrid.Margin = new Thickness(0, rowHeight * 11, 0, 0);
+            ProductText.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            ProductGrid.Height = rowHeight;
+
+            DiscountLabel.Margin = new Thickness(0, rowHeight * 12, 0, 0);
+            DiscountLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
+
+            DiscountGrid.Margin = new Thickness(0, rowHeight * 13, 0, 0);
+            DiscountFrom.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            DiscountTo.FontSize = FONT_SIZE_NORMAL * scaleFont;
+            DiscountGrid.Height = rowHeight;
+
+            DeletedGrid.Margin = new Thickness(0, rowHeight * 14, 0, 0);
+
+            DeletedLabel.FontSize = FONT_SIZE_NORMAL * scaleFont;
         }
 
         private void updateOrderInfo(Logic.Logic logic, double rowHeight)
