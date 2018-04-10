@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" >
+            <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" >
                 <Grid Grid.Column="0" x:Name="table" SizeChanged="table_SizeChanged" MinHeight="300">
 
                 </Grid>
