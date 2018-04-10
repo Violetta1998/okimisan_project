@@ -77,6 +77,9 @@
     <Compile Include="Data\User.cs" />
     <Compile Include="Managers\AuthManager.cs" />
     <Compile Include="Managers\DataBaseManager.cs" />
+    <Compile Include="Screens\AllProductList.xaml.cs">
+      <DependentUpon>AllProductList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\Auth.xaml.cs">
       <DependentUpon>Auth.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\AllProductList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
