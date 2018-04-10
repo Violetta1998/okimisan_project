@@ -24,14 +24,16 @@
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*" MinWidth="150"/>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" MinWidth="195"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" x:Name="table" SizeChanged="table_SizeChanged">
-                
-            </Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                <Grid Grid.Column="0" x:Name="table" SizeChanged="table_SizeChanged" MinHeight="300">
+
+                </Grid>
+            </ScrollViewer>
 
             <Label Content="Наименование" Foreground="White" FontSize="14pt" Grid.Column="1" Grid.Row="2"/>
             <TextBox HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="3"  FontSize="14pt" VerticalAlignment="Stretch"/>
@@ -48,8 +50,9 @@
             <CheckBox x:Name="checkBox3" Foreground="White" FontSize="14pt" VerticalAlignment="Center" Grid.Row="9" Grid.Column="1" Content="Добавить ингредиенты"/>
 
             <Button Content="СОХРАНИТЬ"  Grid.Row="11" Grid.Column="1" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
-            
+
         </Grid>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
@@ -60,31 +63,26 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="45"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="1*" MaxWidth="50"/>
-                <ColumnDefinition Width="1*" MaxWidth="50"/>
-                <ColumnDefinition Width="1*" MaxWidth="50"/>
-                <ColumnDefinition Width="1*" MaxWidth="50"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*" MinWidth="96" />
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="0.5*" MinWidth="96"/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="1" Grid.Column="1" Background="#176760" BorderBrush="#176760" Margin="15,0,0,0">
-                <Image Source="/okimisan_app;component/Resources/AddIcon.png"  />
-            </Button>
-            <Button Grid.Row="1" Grid.Column="2" Background="#F44336" BorderBrush="#F44336" Margin="15,0,0,0">
-                <Image Source="/okimisan_app;component/Resources/RemoveIcon.png"  />
-            </Button>
-            <Button Grid.Row="1" Grid.Column="3" Background="#176760" BorderBrush="#176760" Margin="15,0,0,0">
-                <Image Source="/okimisan_app;component/Resources/CloseIcon.png"  />
-            </Button>
-            <Button Grid.Row="1" Grid.Column="4" Background="#176760" BorderBrush="#176760" Margin="15,0,0,0">
-                <Image Source="/okimisan_app;component/Resources/CloseIcon.png"  />
-            </Button>
+            <Button Content="ДОБАВИТЬ"  Grid.Row="12" Grid.Column="1" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
+            <Button Content="УДАЛИТЬ"  Grid.Row="12" Grid.Column="3" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#F44336" Foreground="White" />
+            <Button Content="ВВЕРХ"  Grid.Row="13" Grid.Column="1" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
+            <Button Content="ВНИЗ"  Grid.Row="13" Grid.Column="3" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
+            
         </Grid>
     </Grid>
 </Page>

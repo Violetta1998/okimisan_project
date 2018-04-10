@@ -23,8 +23,8 @@ namespace okimisan_app.Screens
     /// </summary>
     public partial class Categories : Page
     {
-        const int headerHeight = 40;
-       
+        const int marginHeight = 40;
+        
         public Categories()
         {
             InitializeComponent();
@@ -42,7 +42,8 @@ namespace okimisan_app.Screens
                     {
                         if (l.categories.category[i].id_category == l.categories.category[j].id)
                         {
-                            count++;
+                            count= j;
+
                         } 
                     }
                     if (count == 0)
@@ -53,28 +54,28 @@ namespace okimisan_app.Screens
                         label.Foreground = Brushes.White;
                         label.FontSize = 16;
                         label.Content = l.categories.category[i].name;
+                        label.Margin = new Thickness(0,0,0,marginHeight*i);
+                        Grid.SetColumn(label, 0);
+                        newGrid.Children.Add(label);
+                    }
+                    if (count != 0)
+                    {
+                        Label label = new Label();
+                        label.HorizontalAlignment = HorizontalAlignment.Left;
+                        label.VerticalAlignment = VerticalAlignment.Center;
+                        label.Foreground = Brushes.White;
+                        label.FontSize = 16;
+                        label.Content = l.categories.category[i].name;
+                        label.Margin = new Thickness(0, 0, marginHeight, 2*marginHeight * count);
                         Grid.SetColumn(label, 0);
                         newGrid.Children.Add(label);
                     }
                     count = 0;
-                    AddRowDedinitions(newGrid);
+                    
                     table.Children.Add(newGrid);
                     Grid.SetRow(newGrid, i + 1);
                 }
-            });  
-    }
-
-        private void AddRowDedinitions(Grid grid)
-        {
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Pixel) });
+            });
         }
 
         private void table_SizeChanged(object sender, SizeChangedEventArgs e)
