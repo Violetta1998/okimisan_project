@@ -33,7 +33,7 @@ namespace okimisan_app.Screens
             {
                 table.Children.Clear();
                 l.categories.category = l.categories.allCategory.ToArray();
-                int count = 0;
+                int count = 0; int margCount = 0;
                 for (int i = 0; i < l.categories.category.Count(); i++)
                 {
                     Grid newGrid = new Grid();
@@ -43,7 +43,6 @@ namespace okimisan_app.Screens
                         if (l.categories.category[i].id_category == l.categories.category[j].id)
                         {
                             count= j;
-
                         } 
                     }
                     if (count == 0)
@@ -54,24 +53,29 @@ namespace okimisan_app.Screens
                         label.Foreground = Brushes.White;
                         label.FontSize = 16;
                         label.Content = l.categories.category[i].name;
-                        label.Margin = new Thickness(0,0,0,marginHeight*i);
+                        label.Margin = new Thickness(0, marginHeight * i+ margCount*marginHeight+15, 0,0);
                         Grid.SetColumn(label, 0);
                         newGrid.Children.Add(label);
-                    }
-                    if (count != 0)
-                    {
-                        Label label = new Label();
-                        label.HorizontalAlignment = HorizontalAlignment.Left;
-                        label.VerticalAlignment = VerticalAlignment.Center;
-                        label.Foreground = Brushes.White;
-                        label.FontSize = 16;
-                        label.Content = l.categories.category[i].name;
-                        label.Margin = new Thickness(0, 0, marginHeight, 2*marginHeight * count);
-                        Grid.SetColumn(label, 0);
-                        newGrid.Children.Add(label);
+
+                        margCount = 2;
+                        for (int s = 0; s < l.categories.category.Count(); s++)
+                        {
+                            if (l.categories.category[s].id_category == l.categories.category[i].id)
+                            {
+                                Label label2 = new Label();
+                                label2.HorizontalAlignment = HorizontalAlignment.Left;
+                                label2.VerticalAlignment = VerticalAlignment.Center;
+                                label2.Foreground = Brushes.White;
+                                label2.FontSize = 16;
+                                label2.Content = l.categories.category[s].name;
+                                label2.Margin = new Thickness(40, marginHeight * i + margCount*marginHeight+15, 0, 0);
+                                Grid.SetColumn(label2, 0);
+                                newGrid.Children.Add(label2);
+                                margCount++;
+                            }
+                        }
                     }
                     count = 0;
-                    
                     table.Children.Add(newGrid);
                     Grid.SetRow(newGrid, i + 1);
                 }
