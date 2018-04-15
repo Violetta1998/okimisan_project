@@ -7,82 +7,55 @@
       mc:Ignorable="d" 
      d:DesignHeight="1100" d:DesignWidth="1500"
       Title="Categories">
+
     <Grid Background="Black">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="1*" MinWidth="195"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" >
-                <Grid Grid.Column="0" x:Name="table" SizeChanged="table_SizeChanged" MinHeight="300">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Column="0" Margin="50,50,50,50">
+                <Grid Grid.Column="0" x:Name="table" SizeChanged="table_SizeChanged">
 
                 </Grid>
             </ScrollViewer>
+          
+            <Grid Grid.Column="1" HorizontalAlignment="Center" Width="600" VerticalAlignment="Center" >
+                <Grid Grid.Column="1" HorizontalAlignment="Center" Width="300" VerticalAlignment="Center">
+                    <Label Height="40" VerticalAlignment="Top" VerticalContentAlignment="Center"  Margin="0,0,0,0" Foreground="White" FontSize="14pt">Наименование:</Label>
+                    <TextBox VerticalContentAlignment="Center" Height="40" VerticalAlignment="Top" Margin="0,40,0,0" FontSize="14pt"></TextBox>
 
-            <Label Content="Наименование" Foreground="White" FontSize="14pt" Grid.Column="1" Grid.Row="2"/>
-            <TextBox HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="3"  FontSize="14pt" VerticalAlignment="Stretch"/>
+                    <Label Height="40" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,80,0,0" Foreground="White" FontSize="14pt">Категория:</Label>
+                    <ComboBox VerticalContentAlignment="Center" Height="40" VerticalAlignment="Top" Margin="0,120,0,0">
+                        <ComboBoxItem Content="Пункт меню" Foreground="Black" Background="White" BorderBrush="Black" FontSize="14pt"/>
+                        <ComboBoxItem Content="Пункт меню" Foreground="Black" Background="White" BorderBrush="Black" FontSize="14pt"/>
+                        <ComboBoxItem Content="Пункт меню" Foreground="Black" Background="White" BorderBrush="Black" FontSize="14pt"/>
+                    </ComboBox>
 
-            <Label Content="Находится в категории" Foreground="White" FontSize="14pt" Grid.Column="1" Grid.Row="4"/>
-            <ComboBox Grid.Row="5" Grid.Column="1" BorderBrush="Black" FontSize="14pt" Background="White" Foreground="Black" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                <ComboBoxItem Content="Пункт меню" Foreground="Black" Background="White" BorderBrush="Black"/>
-                <ComboBoxItem Content="Пункт меню" Foreground="Black" Background="White" BorderBrush="Black"/>
-                <ComboBoxItem Content="Пункт меню" Foreground="Black" Background="White" BorderBrush="Black"/>
-            </ComboBox>
-
-            <CheckBox x:Name="checkBox1" Foreground="White" FontSize="14pt"  Grid.Row="7" Grid.Column="1" Content="Готовая продукция" />
-            <CheckBox x:Name="checkBox2" Foreground="White" FontSize="14pt" VerticalAlignment="Center" Grid.Row="8" Grid.Column="1" Content="Показывать в меню" />
-            <CheckBox x:Name="checkBox3" Foreground="White" FontSize="14pt" VerticalAlignment="Center" Grid.Row="9" Grid.Column="1" Content="Добавить ингредиенты"/>
-
-            <Button Content="СОХРАНИТЬ"  Grid.Row="11" Grid.Column="1" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
-
-        </Grid>
-
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="0.5*" MinWidth="96" />
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="0.5*" MinWidth="96"/>
-                <ColumnDefinition Width="0.5*"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Content="ДОБАВИТЬ"  Grid.Row="12" Grid.Column="1" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
-            <Button Content="УДАЛИТЬ"  Grid.Row="12" Grid.Column="3" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#F44336" Foreground="White" />
-            <Button Content="ВВЕРХ"  Grid.Row="13" Grid.Column="1" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
-            <Button Content="ВНИЗ"  Grid.Row="13" Grid.Column="3" FontSize="14pt" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="#176760" Foreground="White" />
-            
+                    <StackPanel x:Name="stackPanel" Margin="0,200,0,0">
+                        <CheckBox x:Name="checkBox1" IsChecked="False" Height="40" Content="Готовая продукция" FontSize="14pt" Foreground="White"/>
+                        <CheckBox x:Name="checkBox2" IsChecked="False" Height="40" Content="Показывать в меню" FontSize="14pt" Foreground="White"/>
+                        <CheckBox x:Name="checkBox3" IsChecked="False" Height="40" Content="Добавить ингредиенты" FontSize="14pt" Foreground="White"/>
+                    </StackPanel>
+                    
+                    <Button Height="40" Background="#176760" VerticalAlignment="Top" Margin="0,315,0,0">
+                        <Label VerticalContentAlignment="Center" Foreground="White" Content="Сохранить" FontSize="14pt"/>
+                    </Button>
+                    
+                    <Grid Height="85" VerticalAlignment="Top" Margin="0,365,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Добавить" FontSize="14pt" VerticalContentAlignment="Center" Grid.Column="0" Height="40" VerticalAlignment="Top" Background="#176760" Foreground="White" Margin="0,0,4,0"/>
+                        <Button Content="Удалить" FontSize="14pt" VerticalContentAlignment="Center" Grid.Column="1" Height="40" VerticalAlignment="Top" Background="#F44336" Foreground="White" Margin="4,0,0,0"/>
+                        <Button Content="Вверх" FontSize="14pt" VerticalContentAlignment="Center" Grid.Column="0" Height="40" VerticalAlignment="Top" Background="#176760" Foreground="White" Margin="0,44,4,0"/>
+                        <Button Content="Вниз" FontSize="14pt" VerticalContentAlignment="Center" Grid.Column="1" Height="40" VerticalAlignment="Top" Background="#176760" Foreground="White" Margin="4,44,0,0"/>
+                    </Grid>
+                    
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
