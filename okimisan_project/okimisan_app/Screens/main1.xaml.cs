@@ -50,5 +50,25 @@ namespace okimisan_app.Screens
 
         private Logic.General.PAGES[] _availableScreens = new Logic.General.PAGES[] { Logic.General.PAGES.CreateOrder, Logic.General.PAGES.ClientsList, Logic.General.PAGES.OrderList, Logic.General.PAGES.Categories, Logic.General.PAGES.AllProductList};
         private Logic.General.PAGES currentPage = Logic.General.PAGES.None;
+
+        private void AllOrders_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(l => l.general.currentPage = Logic.General.PAGES.OrderList);
+        }
+
+        private void CreateOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(l => l.general.currentPage = Logic.General.PAGES.CreateOrder);
+        }
+        
+        private void AllProducts_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(l => l.general.currentPage = Logic.General.PAGES.AllProductList);
+        }
+
+        private void ClientList_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(l => l.general.currentPage = Logic.General.PAGES.ClientsList);
+        }
     }
 }
