@@ -8,8 +8,10 @@
         Title="CreateOrder"
         d:DesignHeight="1100" d:DesignWidth="1500">
 
-    <Grid Background="Black">
-
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/okimisan_app;component/Resources/background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>

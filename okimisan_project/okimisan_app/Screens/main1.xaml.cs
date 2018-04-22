@@ -35,7 +35,7 @@ namespace okimisan_app.Screens
                     }
                 }
                 frame.Visibility = l.general.currentPage == Logic.General.PAGES.None ? Visibility.Collapsed : Visibility.Visible;
-                image.Visibility = ((l.general.currentPage == Logic.General.PAGES.None) || (l.general.currentPage == Logic.General.PAGES.Main1)) ? Visibility.Visible : Visibility.Collapsed;
+                //image.Visibility = ((l.general.currentPage == Logic.General.PAGES.None) || (l.general.currentPage == Logic.General.PAGES.Main1)) ? Visibility.Visible : Visibility.Collapsed;
 
                 modal.Visibility = l.general.currentModalPage != Logic.General.MODAL_PAGES.None ? Visibility.Visible : Visibility.Collapsed;
 

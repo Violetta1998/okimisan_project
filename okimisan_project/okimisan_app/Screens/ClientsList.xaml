@@ -8,7 +8,10 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="ClientsList" Loaded="Page_Loaded">
 
-    <Grid Background="Black">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/okimisan_app;component/Resources/main.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="30"/>
