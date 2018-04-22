@@ -43,22 +43,22 @@
 
                 <Menu x:Name="menu" FontSize="20" Grid.Column="4" Grid.Row="0" Foreground="White" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Center">
                     <MenuItem Header="Меню" Grid.Column="4" Grid.Row="0" Foreground="White">
-                        <MenuItem Header="Меню категорий" Foreground="Black" Background="White" BorderBrush="#382C36"/>
-                        <MenuItem Header="Меню продуктов" Foreground="Black" Background="White" BorderBrush="#382C36"/>
-                        <MenuItem Header="Складской учёт" Foreground="Black" Background="White" BorderBrush="#382C36" />
+                        <MenuItem Header="Меню категорий" Foreground="Black" Background="White" BorderBrush="#382C36"  Click="Categories_Click"/>
+                        <MenuItem Header="Меню продуктов" Foreground="Black" Background="White" BorderBrush="#382C36" />
+                        <MenuItem Header="Складской учёт" Foreground="Black" Background="White" BorderBrush="#382C36" Click="AllProducts_Click" />
                     </MenuItem>
                 </Menu>
 
                 <Menu x:Name="clients" FontSize="20" Grid.Column="6" Grid.Row="0" Foreground="White" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Center">
                     <MenuItem Header="Клиенты" Grid.Column="6" Grid.Row="0" Foreground="White">
-                        <MenuItem Header="Список клиентов" Foreground="Black" Background="White" BorderBrush="#382C36"/>
+                        <MenuItem Header="Список клиентов" Foreground="Black" Background="White" BorderBrush="#382C36"  Click="ClientList_Click"/>
                         <MenuItem Header="Редактировать клиента" Foreground="Black" Background="White" BorderBrush="#382C36"/>
                     </MenuItem>
                 </Menu>
 
                 <Menu x:Name="settings" FontSize="20" Grid.Column="8" Grid.Row="0" Foreground="White" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Center">
                     <MenuItem Header="Настройки" Grid.Column="8" Grid.Row="0" Foreground="White">
-                        <MenuItem Header="Пользователи" Foreground="Black" Background="White" BorderBrush="#382C36" Click="ClientList_Click" />
+                        <MenuItem Header="Пользователи" Foreground="Black" Background="White" BorderBrush="#382C36" />
                         <MenuItem Header="Отчеты" Foreground="Black" Background="White" BorderBrush="#382C36"/>
                     </MenuItem>
                 </Menu>

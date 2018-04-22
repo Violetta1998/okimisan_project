@@ -70,5 +70,10 @@ namespace okimisan_app.Screens
         {
             Logic.Logic.execute(l => l.general.currentPage = Logic.General.PAGES.ClientsList);
         }
+
+        private void Categories_Click(object sender, RoutedEventArgs e)
+        {
+            Logic.Logic.execute(l => l.general.currentPage = Logic.General.PAGES.Categories);
+        }
     }
 }
