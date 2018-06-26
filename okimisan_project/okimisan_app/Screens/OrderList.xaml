@@ -23,12 +23,15 @@
         </Style>
    </Page.Resources>
     
-        <Grid Background="Black">
+        <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/okimisan_app;component/Resources/background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Rectangle Stroke="Wheat" Grid.Row="1" StrokeThickness="1" Margin="-1,0,-1,0"/>
+        <Rectangle Stroke="White" Grid.Row="1" StrokeThickness="1" Margin="-1,0,-1,0"/>
         <Grid Grid.Row="1">            
             <Grid HorizontalAlignment="Right" Margin="0,0,20,0">
                 <Grid.ColumnDefinitions>
@@ -45,7 +48,8 @@
                 </Button>
             </Grid>
         </Grid>
-        <Grid Grid.Row="0" x:Name="mainForm" SizeChanged="table_SizeChanged" Margin="15,15,15,15">
+        
+            <Grid Grid.Row="0" x:Name="mainForm" SizeChanged="table_SizeChanged" Margin="15,15,15,15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition x:Name="additionalColumn1" Width="300"/>
@@ -60,7 +64,7 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1" Margin="50,0,-4,0">
-                    <Border Grid.Column="1" CornerRadius="25,0,0,25"  BorderBrush="White" BorderThickness="4" Panel.ZIndex="1" >
+                    <Border Grid.Column="1" CornerRadius="25,0,0,25"  BorderBrush="White" BorderThickness="3" Panel.ZIndex="1" >
                         <Border BorderBrush="White" BorderThickness="2,0,0,0" Margin="25,0,0,0">
                             <Grid Margin="15,0">
                                 <Label x:Name="DateLabel" Height="30" Foreground="White" Margin="0,0,0,0" VerticalAlignment="Top">Дата заказа:</Label>
@@ -192,8 +196,9 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Grid x:Name="tableOrder" Grid.Column="2" Background="Black">
-                <Rectangle Stroke="White" StrokeThickness="3"/>
+            
+            <Grid x:Name="tableOrder" Grid.Column="2" Background="White">
+                <Rectangle Stroke="Black" StrokeThickness="2"/>
             </Grid>
             <Grid x:Name="FilterGrid2" Grid.Column="3" Background="Transparent" Panel.ZIndex="-1">
                 <Grid.RowDefinitions>
@@ -225,7 +230,7 @@
                                         </ScrollViewer>
                                     </Border>
                                 </Grid>
-                            </Border>
+                            </Border><!--Полный состав-->
                             <Border Grid.Row="1" BorderBrush="White" BorderThickness="0,1,2,0">
                                 <Grid>
                                     <Label Foreground="White" x:Name="HistoryLabel" HorizontalAlignment="Center">История изменений:</Label>
@@ -243,7 +248,7 @@
                                         </ScrollViewer>
                                     </Border>
                                 </Grid>
-                            </Border>
+                            </Border><!--История изменений-->
                         </Grid>
                     </Border>
                     <Button Click="ShowInfoButton_Click" Grid.Column="0"  HorizontalAlignment="Right" Width="25"  Style="{StaticResource TabButton}" >

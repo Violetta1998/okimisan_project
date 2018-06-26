@@ -31,9 +31,9 @@ namespace okimisan_app.Screens
         const double contentProcent = 0.64;
 
         const int MY_PROGRAMM_HEIGHT = 987;
-        const int FONT_SIZE_NORMAL = 13;
-        const int FONT_SIZE_HIGHLIGHT = 15;
-        const int FONT_SIZE_TITLE = 20;
+        const int FONT_SIZE_NORMAL = 14;
+        const int FONT_SIZE_HIGHLIGHT = 18;
+        const int FONT_SIZE_TITLE = 16;
         const int ADDITIONAL_PANELS_BUTTONS_WIDTH = 25;
 
         private double additionalPanelsButtonsWidth = 0;
@@ -81,7 +81,7 @@ namespace okimisan_app.Screens
                         Label titleLabel = new Label();
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
-                        titleLabel.Foreground = Brushes.White;
+                        titleLabel.Foreground = Brushes.Black;
                         titleLabel.FontSize = FONT_SIZE_TITLE * scaleFont;
                         titleLabel.Content = "Заказ";
                         OrderGrid.Children.Add(titleLabel);
@@ -91,7 +91,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(0, 0 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_HIGHLIGHT * scaleFont;
                         label.Content = string.Format("№{0}", l.orders.orders[i].id);
                         label.Height = rowHeight;
@@ -101,7 +101,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 1 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         try
                         {
@@ -116,7 +116,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 2 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         label.Height = rowHeight;
                         label.Content = string.Format("Сумма: {0} руб", l.orders.orders[i].total);
@@ -126,7 +126,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 3 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         label.Height = rowHeight;
                         label.Content = string.Format("Скидка: {0}%", l.orders.orders[i].discount);
@@ -141,7 +141,7 @@ namespace okimisan_app.Screens
                         Label titleLabel = new Label();
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
-                        titleLabel.Foreground = Brushes.White;
+                        titleLabel.Foreground = Brushes.Black;
                         titleLabel.FontSize = FONT_SIZE_TITLE * scaleFont;
                         titleLabel.Content = "Клиент";
                         ClientGrid.Children.Add(titleLabel);
@@ -154,7 +154,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(0, 0 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_HIGHLIGHT * scaleFont;
                         label.Height = rowHeight;
                         label.Content = client != null ? client.name : string.Empty;
@@ -164,7 +164,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 1 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         label.Height = rowHeight;
                         label.Content = client != null ? string.Format("Телефон: {0}", client.phone) : string.Empty;
@@ -174,7 +174,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 2 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         label.Height = rowHeight;
                         label.Content = client != null ? client.getFirstAddress() : string.Empty;
@@ -184,7 +184,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 3 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         label.Height = rowHeight;
                         label.Content = client != null ? string.Format("Кол-во заказов: {0}", client.orders) : string.Empty;
@@ -199,7 +199,7 @@ namespace okimisan_app.Screens
                         Label titleLabel = new Label();
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
-                        titleLabel.Foreground = Brushes.White;
+                        titleLabel.Foreground = Brushes.Black;
                         titleLabel.FontSize = FONT_SIZE_TITLE * scaleFont;
                         titleLabel.Content = "Состав";
                         CompositionGrid.Children.Add(titleLabel);
@@ -214,7 +214,7 @@ namespace okimisan_app.Screens
                             label.HorizontalAlignment = HorizontalAlignment.Left;
                             label.VerticalAlignment = VerticalAlignment.Top;
                             label.Margin = new Thickness(0, index * rowHeight / 4, 0, 0);
-                            label.Foreground = Brushes.White;
+                            label.Foreground = Brushes.Black;
                             label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                             label.Height = rowHeight;
                             label.Content = composition[index].getFullName(l);
@@ -230,7 +230,7 @@ namespace okimisan_app.Screens
                         Label titleLabel = new Label();
                         titleLabel.HorizontalAlignment = HorizontalAlignment.Left;
                         titleLabel.VerticalAlignment = VerticalAlignment.Center;
-                        titleLabel.Foreground = Brushes.White;
+                        titleLabel.Foreground = Brushes.Black;
                         titleLabel.FontSize = FONT_SIZE_TITLE * scaleFont;
                         titleLabel.Content = "Инфо";
                         InfoGrid.Children.Add(titleLabel);
@@ -241,7 +241,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(0, 0 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_HIGHLIGHT * scaleFont;
                         label.Height = rowHeight;
                         label.Content = l.auth.usersFromDB.First(x=>x.id== l.orders.orders[i].id_user).name;
@@ -251,7 +251,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 1 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         label.Content = string.Format("Версия: {0}", l.orders.allOrderLogs.Where(x => x.id_order == l.orders.orders[i].id).Max(x => x.version));
                         InfoGrid.Children.Add(label);
@@ -260,7 +260,7 @@ namespace okimisan_app.Screens
                         label.HorizontalAlignment = HorizontalAlignment.Left;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(6, 2 * rowHeight / 4, 0, 0);
-                        label.Foreground = Brushes.White;
+                        label.Foreground = Brushes.Black;
                         label.Height = rowHeight;
                         label.FontSize = FONT_SIZE_NORMAL * scaleFont;
                         label.Content = string.Format("Печать: {0}", l.orders.orders[i].printed);
@@ -271,8 +271,8 @@ namespace okimisan_app.Screens
 
                     //RECTANGLE
                     Rectangle rect = new Rectangle();
-                    rect.StrokeThickness = i == -1 ? 3 : 1;
-                    rect.Stroke = Brushes.White;
+                    rect.StrokeThickness = i == -1 ? 2 : 1;
+                    rect.Stroke = new SolidColorBrush(Color.FromRgb(38,38,38));
                     Grid.SetColumnSpan(rect, 4);
 
                     Grid newGrid = new Grid();

@@ -8,7 +8,10 @@
      d:DesignHeight="1100" d:DesignWidth="1500"
       Title="Categories">
 
-    <Grid Background="Black">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/okimisan_app;component/Resources/background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>

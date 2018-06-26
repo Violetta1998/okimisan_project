@@ -52,7 +52,6 @@
                 <Menu x:Name="clients" FontSize="20" Grid.Column="6" Grid.Row="0" Foreground="White" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Center">
                     <MenuItem Header="Клиенты" Grid.Column="6" Grid.Row="0" Foreground="White">
                         <MenuItem Header="Список клиентов" Foreground="Black" Background="White" BorderBrush="#382C36"  Click="ClientList_Click"/>
-                        <MenuItem Header="Редактировать клиента" Foreground="Black" Background="White" BorderBrush="#382C36"/>
                     </MenuItem>
                 </Menu>
 
