@@ -223,7 +223,7 @@
                                                     <Setter Property="Foreground" Value="White"></Setter>
                                                 </Style>
                                                 <Style TargetType="{x:Type ScrollBar}" >
-                                                    <Setter Property="Background" Value="Black"></Setter>
+                                                    <Setter Property="Background" Value="White"></Setter>
                                                 </Style>
                                             </ScrollViewer.Resources>
                                             <TextBlock x:Name="FullCompositionTextBlock"  Foreground="White" TextWrapping="Wrap" Margin="10,0,0,0"/>
@@ -241,7 +241,7 @@
                                                     <Setter Property="Foreground" Value="White"></Setter>
                                                 </Style>
                                                 <Style TargetType="{x:Type ScrollBar}" >
-                                                    <Setter Property="Background" Value="Black"></Setter>
+                                                    <Setter Property="Background" Value="White"></Setter>
                                                 </Style>
                                             </ScrollViewer.Resources>
                                             <TextBlock x:Name="HistoryTextBlock"  Foreground="White" TextWrapping="Wrap" Margin="10,0,0,0"/>
