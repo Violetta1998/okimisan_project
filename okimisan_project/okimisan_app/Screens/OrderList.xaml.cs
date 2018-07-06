@@ -427,7 +427,7 @@ namespace okimisan_app.Screens
             FullCompositionTextBlock.Text = string.Empty;
             HistoryLabel.FontSize = FONT_SIZE_HIGHLIGHT * scaleFont;
             HistoryTextBlock.FontSize = FONT_SIZE_NORMAL * scaleFont;
-
+           
             if (logic.orders.selectedOrder != null)
             {
                 List<OrderItem> composition = logic.orders.allOrderItems.Where(x => x.order_id == logic.orders.selectedOrder.id).ToList();
